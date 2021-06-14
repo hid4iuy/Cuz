@@ -1,0 +1,23 @@
+{%load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+</head>
+    <body class="container">
+        <h1 class="display-4 textprimary">候補者一覧</h1>
+        <table class="table">
+
+        {% for item in object_list %}
+            <tr>
+                <td>{{item.candidateCd}}</a></td>
+                <td>得票数{{item.totalCount}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+    </body>
+</html>

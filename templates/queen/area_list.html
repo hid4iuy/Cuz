@@ -1,0 +1,22 @@
+{%load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+</head>
+    <body class="container">
+        <h1 class="display-4 textprimary">選挙区一覧</h1>
+        <table class="table">
+
+        {% for item in object_list %}
+            <tr>
+                <td><a href="/queen/list/{{item.areaName}}">{{item.areaName}}</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+
+    </body>
+</html>
