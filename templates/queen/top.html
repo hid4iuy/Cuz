@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>総理大臣に相応しいと思う人は誰ですか？</title>
+<style>
+	header {
+	display: flex;
+	position: fixed;
+	width:100%;
+	height: 60px;
+	left:0;
+	top:0;
+	margin:0;
+	background-color: #FFF;
+	z-index:1001;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+ 
+.title {
+  margin-right: auto;
+}
+ 
+.menu-item {
+  list-style: none;
+  display: inline-block;
+  padding-right: 50px;
+}
+.img-wrap {
+    top: 40px;
+	text-align: center;
+	margin:90px;
+	overflow: hidden;
+	position: relative;
+	
+}
+
+.img-wrap:before {
+  animation: img-wrap 2s cubic-bezier(.4, 0, .2, 1) forwards;
+  background: #fff;
+  bottom: 0;
+  content: '';
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+@keyframes img-wrap {
+  100% {
+    transform: translateX(100%);
+  }
+}
+	.BG1{
+		text-align: center;
+		position: relative;
+	}
+	
+		.waku{
+	text-align: center;
+	position: relative;
+	top: -1235px;
+	pointer-events: none;
+	}
+	
+	
+	.suga_face{
+	text-align: center;
+	position: relative;
+    top: -860px;
+    left: 95px;
+  width: 140px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+}
+		.suga_face{
+  transition-duration: 0.3s;
+}
+	.suga_face:hover{
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+	
+		.hiroyuki_face{
+	text-align: center;
+	position: relative;
+    top: -984px;
+    left: 230px;
+  width: 140px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+}
+		.hiroyuki_face{
+  transition-duration: 0.3s;
+}
+	.hiroyuki_face:hover{
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+	
+	
+</style>
+</head>
+<body>
+<header>
+    <nav class="nav">
+      <ul class="menu-group">
+        <li class="menu-item"><a href="#"><img src="../Desktop/tohyo/sozai/tohyo.jpg" height="30" alt="投票！"/><a/></li>
+        <li class="menu-item"><a href="#"><img src="../Desktop/tohyo/sozai/kekka.jpg" height="30" alt="結果を見る"/></a></li>
+      </ul>
+  </nav>
+  </header>
+<div class="img-wrap">
+<img src="../Desktop/tohyo/sozai/tohyositekudasai.jpg" width="570" alt="総理大臣に相応しい人に投票してください"/>
+</div>
+	<div class="BG1">
+	<img src="../Desktop/tohyo/sozai/BG1.jpg" width="800" alt="BG1"/>
+	</div>
+	<div class="suga_face">
+<a href="#"><img src="../Desktop/tohyo/hito/suga_face.png" width="140" alt="菅義偉の顔"/></a> </div>
+	<div class="hiroyuki_face">
+	<a href="#"><img src="../Desktop/tohyo/hito/hiroyuki_face.png" width="110" alt="ひろゆきの顔"/></a>
+	</div>
+	<div class="waku">
+    <img src="../Desktop/tohyo/sozai/waku.png" width="800" alt=""/> </div>
+	</body>
+</html>
