@@ -1,0 +1,25 @@
+{%load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" name="voteafter" content="投票ボタン押下後に表示">
+    <title>投票完了</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+</head>
+    <body class="container">
+        <h1 class="display-4 textprimary">投票ありがと♥</h1>
+        <p class="h5 mt-4"></p>
+    <!--Twitterシェアボタン-->
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="{{twt}}" data-url="https://Cuz" data-hashtags="日本大統領選 #Cuz" data-lang="ja" data-show-count="false">Tweet</a>
+    <!--投票結果ページへ移動-->
+        <a href="/result">
+            <button type="button" class="btn btn-primary btn-lg">投票結果を確認</button>
+        </a>
+    <!--TOPページへ移動-->
+        <a href="/">
+        <button type="button" class="btn btn-danger btn-lg">TOPに戻る</button>
+        </a>
+    </body>
+</html>

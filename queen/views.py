@@ -1,75 +1,77 @@
-from django.views.generic import TemplateView,ListView# ❶
+from django.views.generic import TemplateView,ListView,DetailView
 from django.db import models
 import plotly.express as px
 from django_pandas.io import read_frame
 from django.shortcuts import render, redirect
 from plotly.offline import plot as p
-from queen.models import VOTE ,CANDIDATE ,AREA
+from queen.models import VOTE ,CANDIDATE ,AREA, IMAGE
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import CandidateForm
-import logging
+import logging,datetime
 
-
-# INOTSUME
 def resultViews(request):
-    vote_data = VOTE.objects.all().values('candidateCd__name', 'totalCount')
-    df = read_frame(vote_data, fieldnames=['candidateCd__name','totalCount']).sort_values('totalCount')
-    fig = px.bar(df, x='totalCount', y='candidateCd__name')
-    fig.update_xaxes(title_text='得票数')
-    fig.update_yaxes(title_text='')
-    fig.update_layout(height=300, width=1300)
-    plot = p(fig, output_type='div', include_plotlyjs=False)
+    labels = []
+    data = []
 
-    return render(request, 'queen/result.html', {'plot': plot})
+    queryset = VOTE.objects.all().order_by('totalCount').reverse()
+    for vote in queryset:
+        labels.append(vote.candidateCd.name)
+        data.append(vote.totalCount)
+
+    return render(request, 'queen/result.html', {
+        'labels': labels,
+        'data': data,
+    })
         
-# YAMASHITA
-class CandidateList(ListView):
+class detailViews(DetailView):
     model = CANDIDATE
-    template_name = 'list.html'
+    template_name = 'queen/detail.html'
     
-class AreaList(ListView):
-    model = AREA
-
-class VoteList(ListView):
-    model = VOTE
-    
-# def areacand(request ,area_n):
-#     params = {
-#         'data':[]
-#     }
-#     ['data'] = Candidate.objects.get(areaName=area_n)
-#     return render(request , 'areacand.html',params)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        candidate = context.get("object")
+        context.update({
+            'image': IMAGE.objects.filter(candidateCd=candidate.uuid),
+        })
+        return context
+        
+    def get_object(self):
+        return CANDIDATE.objects.get(nameKN=self.kwargs['nameKN'])
 
 def vote(request, uuid):
-    result = uuid
+    can = CANDIDATE.objects.get(uuid=uuid)
     vote = VOTE.objects.get(candidateCd=uuid)
+    params = {
+        'twt': "日本大統領選挙！私は"+ can.name + "さんに投票しました！"
+    }
+    now = datetime.datetime.now()
+    today = now.strftime("%Y/%m/%d")
+    lastpoll = request.COOKIES.get('lastpoll')
+    if today == lastpoll:
+        response = HttpResponse('本日は投票済みです')
+        return response
+
+    response = render(request, 'queen/voteaft.html',params)
+    
+    poll = now.strftime("%Y/%m/%d")
+    response.set_cookie('lastpoll', poll, max_age=365*24*60*60)
     if request.method == 'POST':
         vote.totalCount += 1
-        vote.save()
-    return redirect(to='/list')
-    #return HttpResponse(result)
-    
-def create(request):
-    if (request.method == 'POST'):
-        obj = CANDIDATE()
-        candidate = CandidateForm(request.POST ,instance=obj)
-        # name = request.POST['name']
-        # nameKN = request.POST['nameKN']
-        # sex = request.POST['sex']
-        # birthYMD = request.POST['birthYMD']
-        # partyCd = request.POST['partyCd']
-        # mail = request.POST['mail']
-        # link = request.POST['link']
-        # candidate = CANDIDATE(name=name,nameKN=nameKN,sex=sex,birthYMD=birthYMD,partyCd=partyCd,mail=mail,link=link)
-        # candidate.save()
-        if candidate.is_valid():
-            logging.debug("検証に成功しました。データを保存します")
-            candidate.save()
-        else:
-            logging.debug("検証に失敗したので、データを保存しません。検証に失敗した理由を次に表示します。")
-            logging.debug(candidate.errors)
-        return redirect(to='/list')
-    params = {
-        'form': CandidateForm(),
-    }
-    return render(request, 'queen/create.html',params)
+        if request.POST['age'] != '':
+            age = int(request.POST['age'])
+            if age >= 18:
+                vote.overEighteenCount += 1
+            else:
+                vote.underEighteenCount += 1
+        if request.POST['sex'] != 'X':
+            sex = request.POST['sex']
+            if sex == '0':
+                vote.maleCount += 1
+            elif sex == '1':
+                vote.femaleCount += 1
+    vote.save()
+    return response
+
+def index(request):
+    return render(request, 'queen/top.html')
+

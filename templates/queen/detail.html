@@ -1,0 +1,134 @@
+<candidate>
+    {% load static %}
+    <style>
+        table.detail {
+        width: 500px;
+        margin: 0 auto;
+        border-collapse: separate;
+        border-spacing: 0px 15px;
+        font-size: 12px;
+        }
+        
+        table.detail th,
+        table.detail td {
+        padding: 10px;
+        }
+        
+        table.detail th {
+        background: #295890;
+        vertical-align: middle;
+        text-align: left;
+        width: 100px;
+        overflow: visible;
+        position: relative;
+        color: #fff;
+        font-weight: normal;
+        font-size: 15px;
+        }
+        
+        table.detail th:after {
+        left: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(136, 183, 213, 0);
+        border-left-color: #295890;
+        border-width: 10px;
+        margin-top: -10px;
+        }
+        
+        table.detail td {
+        background: #f8f8f8;
+        width: 360px;
+        padding-left: 20px;
+        }
+        img {
+        border-radius: 50%;  /*角を丸くする指定*/
+        width: 100px;  /*横幅*/
+        height: 100px;  /*縦幅*/
+        }
+    </style>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+    <img src="{% static "{{ image }}" %}" />
+    <table class="detail">
+        <tbody>
+            <tr>
+                <th class="arrow_box">立候補者名</div></th>
+                <td>{{ candidate.name }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">性別</div></th>
+                <td>{{ candidate.get_sex_display }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">生年月日</div></th>
+                <td>{{ candidate.birthYMD }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">所属</div></th>
+                <td>{{ candidate.partyCd.partyName }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">メール</div></th>
+                <td>{{ candidate.mail }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">詳細</div></th>
+                <td>
+                    <a href={{ candidate.link }}>リンク</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!-- Button trigger modal -->
+           <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Modal">投票する</button>
+  <!-- モーダルの設定 -->
+  
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+    <!--以下modal-dialogのCSSの部分で modal-lgやmodal-smを追加するとモーダルのサイズを変更することができる-->
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="Modal">投票確認</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            {{candidate.name}}に投票しますか？<br>
+            よろしければ年齢と性別を教えて下さい。※未記入でも投票は可能です。
+            <form action="{% url 'votecan' candidate.uuid %}" method="post">
+            {% csrf_token %}
+            <label for="age">年齢</label>
+            <input type="number" name="age" id="age" min="0" max="120"><br>
+            <label for="sex">性別</label>
+            <select name="sex"id="sex">
+            <option value="X">未回答</option>
+            <option value="0">男</option>
+            <option value="1">女</option>
+            <option value="2">その他</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">やめる</button>
+<!--FORM送信-->
+            <input type="submit" value="投票" class="btn btn-primary">
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+        </tr>
+        </table>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 
+</candidate>
