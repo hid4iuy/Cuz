@@ -7,7 +7,7 @@ from plotly.offline import plot as p
 from queen.models import VOTE ,CANDIDATE ,AREA, IMAGE
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import CandidateForm
-import logging
+import logging,datetime
 
 def resultViews(request):
     labels = []
