@@ -1,131 +1,146 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>総理大臣に相応しいと思う人は誰ですか？</title>
-<style>
-	header {
-	display: flex;
-	position: fixed;
-	width:100%;
-	height: 60px;
-	left:0;
-	top:0;
-	margin:0;
-	background-color: #FFF;
-	z-index:1001;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-}
- 
-.title {
-  margin-right: auto;
-}
- 
-.menu-item {
-  list-style: none;
-  display: inline-block;
-  padding-right: 50px;
-}
-.img-wrap {
-    top: 40px;
-	text-align: center;
-	margin:90px;
-	overflow: hidden;
-	position: relative;
-	
-}
-
-.img-wrap:before {
-  animation: img-wrap 2s cubic-bezier(.4, 0, .2, 1) forwards;
-  background: #fff;
-  bottom: 0;
-  content: '';
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1;
-}
-
-@keyframes img-wrap {
-  100% {
-    transform: translateX(100%);
-  }
-}
-	.BG1{
-		text-align: center;
-		position: relative;
-	}
-	
-		.waku{
-	text-align: center;
-	position: relative;
-	top: -1235px;
-	pointer-events: none;
-	}
-	
-	
-	.suga_face{
-	text-align: center;
-	position: relative;
-    top: -860px;
-    left: 95px;
-  width: 140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-		.suga_face{
-  transition-duration: 0.3s;
-}
-	.suga_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
-}
-	
-		.hiroyuki_face{
-	text-align: center;
-	position: relative;
-    top: -984px;
-    left: 230px;
-  width: 140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-		.hiroyuki_face{
-  transition-duration: 0.3s;
-}
-	.hiroyuki_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
-}
-	
-	
-</style>
-</head>
-<body>
-<header>
-    <nav class="nav">
-      <ul class="menu-group">
-        <li class="menu-item"><a href="#"><img src="../Desktop/tohyo/sozai/tohyo.jpg" height="30" alt="投票！"/><a/></li>
-        <li class="menu-item"><a href="#"><img src="../Desktop/tohyo/sozai/kekka.jpg" height="30" alt="結果を見る"/></a></li>
-      </ul>
-  </nav>
-  </header>
-<div class="img-wrap">
-<img src="../Desktop/tohyo/sozai/tohyositekudasai.jpg" width="570" alt="総理大臣に相応しい人に投票してください"/>
-</div>
-	<div class="BG1">
-	<img src="../Desktop/tohyo/sozai/BG1.jpg" width="800" alt="BG1"/>
-	</div>
-	<div class="suga_face">
-<a href="#"><img src="../Desktop/tohyo/hito/suga_face.png" width="140" alt="菅義偉の顔"/></a> </div>
-	<div class="hiroyuki_face">
-	<a href="#"><img src="../Desktop/tohyo/hito/hiroyuki_face.png" width="110" alt="ひろゆきの顔"/></a>
-	</div>
-	<div class="waku">
-    <img src="../Desktop/tohyo/sozai/waku.png" width="800" alt=""/> </div>
-	</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>総理大臣に相応しいと思う人は誰ですか？</title>
+    {% include 'css/top.css' %}
+  </head>
+  <body onload="func1()">
+    {% load static %} 
+    {% include 'queen/Include-File.html' %} 
+    <div class="img-wrap">
+      <img src="{% static "img/tohyo/sozai/tohyositekudasai.jpg" %}" width="600" alt="総理大臣に相応しい人に投票してください"/>
+    </div>
+    <div class="BG1">
+      <img src="{% static "img/tohyo/sozai/BG1.jpg" %}" width="800" alt="BG1"/>
+    </div>
+    <div class="suga_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/suga_face.png" %}" width="140" alt="菅義偉の顔"/>
+      </a>
+    </div>
+    <div class="hiroyuki_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/hiroyuki_face.png" %}" width="110" alt="ひろゆきの顔"/>
+      </a>
+    </div>
+    <div class="kounotarou_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/kounotarou_face.png" %}" width="135" alt="河野太郎の顔"/>
+      </a>
+    </div>
+    <div class="ishiba_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/ishiba_face.png" %}" width="120" alt="石破茂の顔"/>
+      </a>
+    </div>
+    <div class="abe_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/abe_face.png" %}" width="170" alt="安倍晋三の顔"/>
+      </a>
+    </div>
+    <div class="koizumi_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/koizumi_face.png" %}" width="90" alt="小泉進次郎の顔"/>
+      </a>
+    </div>
+    <div class="edano_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/edano_face.png" %}" width="130" alt="枝野幸男の顔"/>
+      </a>
+    </div>
+    <div class="renhou_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/renhou_face.png" %}" width="110" alt="蓮舫の顔"/>
+      </a>
+    </div>
+    <div class="kan_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/kan_face.png" %}" width="130" alt="菅直人の顔"/>
+      </a>
+    </div>
+    <div class="kaieda_face">
+      <a href="#">
+        <img src="{% static "/img/tohyo/hito/kaieda_face.png" %}" width="91" alt="海江田万里の顔"/>
+      </a>
+    </div>
+    <div class="yamaguchi_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/yamaguchi_face.png" %}" width="120" alt="山口那津男の顔"/>
+      </a>
+    </div>
+    <div class="shii_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/shii_face.png" %}" width="150" alt="志位和夫の顔"/>
+      </a>
+    </div>
+    <div class="toru_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/toru_face.png" %}" width="210" alt="橋下徹の顔"/>
+      </a>
+    </div>
+    <div class="matui_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/matui_face.png" %}" width="110" alt="松井一郎の顔"/>
+      </a>
+    </div>
+    <div class="tamaki_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/tamaki_face.png" %}" width="80" alt="玉木雄一郎の顔"/>
+      </a>
+    </div>
+    <div class="takesi_face">
+      <a href="#">
+        <img src="{% static "img/tohyo/hito/takesi_face.png" %}" width="140" alt="ビートたけしの顔"/>
+      </a>
+    </div>
+    </div>
+    <div class="waku">
+      <img src="{% static "img/tohyo/sozai/waku.png" %}" width="800" alt=""/>
+    </div>
+    <div class="fukidasi">
+      <img src="{% static "img/tohyo/sozai/fukidasi1.png" %}" width="400" alt="" id="image1"/>
+    </div>
+    <div class="name">
+      <img src="{% static "img/tohyo/sozai/name.png" %}" width="800" alt="" />
+    </div>
+  
+    <script>
+    		function header(){
+          $.ajax({
+          url: "header1.html",
+          cache: false,
+          success: function(html){
+          document.write(html);
+          }
+          });
+          }
+            		
+          const image1 = document.getElementById("image1");
+          image1.classList.add('off');
+          function func1() {
+          image1.classList.remove('off');
+          image1.classList.add('on');
+          }
+  		
+      	(function() {
+        const image = document.querySelectorAll('.img-wrap');
+        
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.intersectionRatio > 0) {
+              entry.target.classList.add('img-animation');
+            } else {
+              entry.target.classList.remove('img-animation');
+            }
+          });
+        });
+    
+        Array.prototype.forEach.call(image, function(img) {
+          observer.observe(img);
+        });
+      })();
+  		
+  	</script>
+  </body>
 </html>
