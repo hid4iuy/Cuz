@@ -1,0 +1,86 @@
+<candidate>
+    {% load static %}
+    <style>
+        table.detail {
+        width: 500px;
+        margin: 0 auto;
+        border-collapse: separate;
+        border-spacing: 0px 15px;
+        font-size: 12px;
+        }
+        
+        table.detail th,
+        table.detail td {
+        padding: 10px;
+        }
+        
+        table.detail th {
+        background: #295890;
+        vertical-align: middle;
+        text-align: left;
+        width: 100px;
+        overflow: visible;
+        position: relative;
+        color: #fff;
+        font-weight: normal;
+        font-size: 15px;
+        }
+        
+        table.detail th:after {
+        left: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(136, 183, 213, 0);
+        border-left-color: #295890;
+        border-width: 10px;
+        margin-top: -10px;
+        }
+        
+        table.detail td {
+        background: #f8f8f8;
+        width: 360px;
+        padding-left: 20px;
+        }
+        img {
+        border-radius: 50%;  /*角を丸くする指定*/
+        width: 100px;  /*横幅*/
+        height: 100px;  /*縦幅*/
+        }
+    </style>
+    <img src="{% static "{{ image }}" %}" />
+    <table class="detail">
+        <tbody>
+            <tr>
+                <th class="arrow_box">立候補者名</div></th>
+                <td>{{ candidate.name }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">性別</div></th>
+                <td>{{ candidate.get_sex_display }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">生年月日</div></th>
+                <td>{{ candidate.birthYMD }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">所属</div></th>
+                <td>{{ candidate.partyCd.partyName }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">メール</div></th>
+                <td>{{ candidate.mail }}</td>
+            </tr>
+            <tr>
+                <th class="arrow_box">詳細</div></th>
+                <td>
+                    <a href={{ candidate.link }}>リンク</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</candidate>
