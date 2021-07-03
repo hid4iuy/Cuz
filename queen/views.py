@@ -1,5 +1,4 @@
 from django.views.generic import TemplateView,ListView,DetailView
-
 from django.db import models
 import plotly.express as px
 from django_pandas.io import read_frame
@@ -9,15 +8,6 @@ from queen.models import VOTE ,CANDIDATE ,AREA, IMAGE
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import CandidateForm
 import logging
-
-
-# INOTSUME
-class topViews(ListView):
-    model = CANDIDATE
-    template_name = 'queen/top.html'
-    
-    def get_queryset(self):
-        return CANDIDATE.objects.all()
 
 def resultViews(request):
     labels = []
