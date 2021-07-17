@@ -484,62 +484,37 @@ template {
 [hidden] {
   display: none;
 }
-	
 
+{% load static %} 
 
-	.img-wrap{
+        body{
+background-image: url("{% static "img/tohyo/sozai/242669_s.jpg" %}");
+    }
+    
+.img-wrap{
 		text-align: center;
 		padding-top: 100px;
-		padding-bottom: 50px;
 	}
 
-.img-animation {
-  animation: img-opacity 2s cubic-bezier(.4, 0, .2, 1);
-  overflow: hidden;
-  position: relative;
-}
-
-.img-animation:before {
-  animation: img-animation 2s cubic-bezier(.4, 0, .2, 1) forwards;
-  background: #fff;
-  bottom: 0;
-  content: '';
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1;
-}
-
-@keyframes img-opacity {
-  0% {
-    opacity: 0;
-  }
-}
-
-@keyframes img-animation {
-  100% {
-    transform: translateX(100%);
-  }
-}
 	.BG1{
 		text-align: center;
+		top: 55px;
+		filter: drop-shadow(1px 1px 10px rgba(0,0,0,0.6));
 		position: relative;
 	}
 	
 		.waku{
 	text-align: center;
 	position: relative;
-	top: -2831px;
+	top: -3311px;
 	left: 1px;
 	pointer-events: none;
 	}
 			.name{
 	text-align: center;
 	position: relative;
-	top: -4217px;
-	left: 1px;
+	top: -4696px;
+	left: 3px;
 	pointer-events: none;
 	}
 	
@@ -811,11 +786,87 @@ template {
   transform: scale(1.08);
   transition-duration: 0.3s;
 	}
+			.yuriko_face{
+	text-align: center;
+	position: relative;
+    top: -2134px;
+    left: 137px;
+  width:110px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.yuriko_face:hover{
+  transform: scale(1.08);
+  transition-duration: 0.3s;
+	}
+
+			.jakucho_face{
+	text-align: center;
+	position: relative;
+    top: -2238px;
+    left: 238px;
+  width:110px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.jakucho_face:hover{
+  transform: scale(1.08);
+  transition-duration: 0.3s;
+	}
+			.hikakin_face{
+	text-align: center;
+	position: relative;
+    top: -2347px;
+    left: -55px;
+  width:150px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.hikakin_face:hover{
+  transform: scale(1.08);
+  transition-duration: 0.3s;
+	}
+			.saori_face{
+	text-align: center;
+	position: relative;
+    top: -2442px;
+    left: -171px;
+  width:110px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.saori_face:hover{
+  transform: scale(1.08);
+  transition-duration: 0.3s;
+	}
+			.shuzo_face{
+	text-align: center;
+	position: relative;
+    top: -2361px;
+    left: -64px;
+  width:160px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.shuzo_face:hover{
+  transform: scale(1.08);
+  transition-duration: 0.3s;
+	}
 		.fukidasi{
 	text-align: center;
 	position: relative;
-    top: -3909px;
-    left: -120px;
+    top: -4390px;
+    left: -130px;
   margin: 0 auto;
   overflow: hidden;
 pointer-events: none;
@@ -829,5 +880,6 @@ transform: scale(1.0, 1.0);
 .off {
 transform: scale(0, 0) ;
 }
-	
+
+
 </style>

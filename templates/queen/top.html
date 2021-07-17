@@ -1,21 +1,23 @@
 <!doctype html>
+ {% load static %} 
 <html>
   <head>
     <meta charset="UTF-8">
     <title>総理大臣に相応しいと思う人は誰ですか？</title>
     {% include 'css/top.css' %}
+
   </head>
   <body onload="func1()">
     {% load static %} 
     {% include 'queen/Include-File.html' %} 
     <div class="img-wrap">
-      <img src="{% static "img/tohyo/sozai/tohyositekudasai.jpg" %}" width="600" alt="総理大臣に相応しい人に投票してください"/>
+      <img src="{% static "img/tohyo/sozai/tohyositekudasai.png" %}" width="600" alt="総理大臣に相応しい人に投票してください"/>
     </div>
     <div class="BG1">
-      <img src="{% static "img/tohyo/sozai/BG1.jpg" %}" width="800" alt="BG1"/>
+      <img src="{% static "img/tohyo/sozai/BG1.jpg" %}" alt="BG1"/>
     </div>
     <div class="suga_face">
-      <a href="#">
+      <a href="/detail/ミヤムラユウキ">
         <img src="{% static "img/tohyo/hito/suga_face.png" %}" width="140" alt="菅義偉の顔"/>
       </a>
     </div>
@@ -94,53 +96,58 @@
         <img src="{% static "img/tohyo/hito/takesi_face.png" %}" width="140" alt="ビートたけしの顔"/>
       </a>
     </div>
-    </div>
-    <div class="waku">
-      <img src="{% static "img/tohyo/sozai/waku.png" %}" width="800" alt=""/>
-    </div>
-    <div class="fukidasi">
-      <img src="{% static "img/tohyo/sozai/fukidasi1.png" %}" width="400" alt="" id="image1"/>
-    </div>
-    <div class="name">
-      <img src="{% static "img/tohyo/sozai/name.png" %}" width="800" alt="" />
-    </div>
+<div class="yuriko_face">
+		<a href="#"><img src="{% static "img/tohyo/hito/yuriko_face.png" %}" width="105" alt="小池百合子の顔"/></a>
+		</div>
+		<div class="jakucho_face">
+		<a href="#"><img src="{% static "img/tohyo/hito/jakucho_face.png" %}" width="95" alt="瀬戸内寂聴の顔"/></a>
+		</div>
+<div class="hikakin_face">
+		<a href="#"><img src="{% static "img/tohyo/hito/hikakin_face.png" %}" width="120" alt="HIKAKINの顔"/></a>
+		</div>
+<div class="saori_face">
+		<a href="#"><img src="{% static "img/tohyo/hito/saori_face.png" %}" width="100" alt="吉田沙保里の顔"/></a>
+		</div>
+<div class="shuzo_face">
+		<a href="#"><img src="{% static "img/tohyo/hito/shuzo_face.png" %}" width="150" alt="松岡修造の顔"/></a>
+		</div>
+<div class="waku">
+  		<img src="{% static "img/tohyo/sozai/waku.png" %}" width="800" alt=""/>
+		</div>
+<div class="fukidasi">
+  		<img src="{% static "img/tohyo/sozai/fukidasi1.png" %}" width="400" alt="" id="image1"/>
+		</div> 
+<div class="name">
+  		<img src="{% static "img/tohyo/sozai/name.png" %}" width="800" alt="" />
+		</div>
   
     <script>
-    		function header(){
-          $.ajax({
-          url: "header1.html",
-          cache: false,
-          success: function(html){
-          document.write(html);
-          }
-          });
-          }
-            		
-          const image1 = document.getElementById("image1");
-          image1.classList.add('off');
-          function func1() {
-          image1.classList.remove('off');
-          image1.classList.add('on');
-          }
-  		
-      	(function() {
-        const image = document.querySelectorAll('.img-wrap');
-        
-        const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.intersectionRatio > 0) {
-              entry.target.classList.add('img-animation');
-            } else {
-              entry.target.classList.remove('img-animation');
-            }
-          });
-        });
-    
-        Array.prototype.forEach.call(image, function(img) {
-          observer.observe(img);
-        });
-      })();
-  		
-  	</script>
+const image1 = document.getElementById("image1");
+image1.classList.add('off');
+function func1() {
+image1.classList.remove('off');
+image1.classList.add('on');
+}
+		
+		
+	(function() {
+  const image = document.querySelectorAll('.img-wrap');
+  
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.intersectionRatio > 0) {
+        entry.target.classList.add('img-animation');
+      } else {
+        entry.target.classList.remove('img-animation');
+      }
+    });
+  });
+  
+  Array.prototype.forEach.call(image, function(img) {
+    observer.observe(img);
+  });
+})();
+		
+	</script>
   </body>
 </html>
