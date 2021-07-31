@@ -1,14 +1,198 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
+  <style>
+
+  body {
+  /*font-family: "Open Sans", sans-serif;*/
+  font-family : 'Poppins', "游ゴシック", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
+  line-height: 1.25;
+  background-image: url({% static "img/tohyo/sozai/242669_s.jpg" %});
+  margin: 200px 0px 0px 0px;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  table-layout: auto;
+  width: 650px;
+}
+table tr {
+  background-color: #CCC;
+  border-bottom: 1px solid #fff;
+}
+table tr:nth-child(even){
+  background-color: #eee;
+}
+table th,
+table td {
+  padding: .35em 0em;
+  border: solid 1px #fff;
+}
+table thead th {
+    font-size: .85em;
+    padding: 1em;
+}
+table thead tr{
+  background-color: #fd6767;
+  color:#fff;
+}
+table tbody th {
+  text-align: left;
+  font-size: .8em;
+}
+.rank_{
+   text-align: center;
+   font-family : "ヒラギノ角ゴ Pro W3","メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
+}
+.rank_td{
+   font-size: 30px;
+   font-weight: 900;
+}
+#rank{
+   text-align: left;
+   width: 93px;
+}
+.before{
+  width: 15%;
+}
+.tokuhyo{
+  text-align: right;
+  color: #0079c2;
+  font-weight: bold;
+}
+.lastrank{
+  font-size : 10px;
+}
+.compare:before{
+  content: '';
+  width : 100% ;
+  height : 1px;
+  background-color: #000;
+  display: block;
+}
+.icon{
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1.5px solid #000;
+}
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+    width:100%
+  }
+  table th{
+    background-color: #fd6767;
+    display: block;
+    border-right: none;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr {
+    display: block;
+    margin-bottom: .625em;
+    border: 1px solid #fd6767;
+  }
+  table td {
+    border-bottom: 1px dotted #bbb;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    position: relative;
+    padding: 1.5em 1em 1.5em 4em;
+    border-right: none;
+  }
+  
+  table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    color: #000;
+  }
+  table td:last-child {
+    border-bottom: 0;
+  }
+  table tbody th {
+    color: #fff;
+    padding: 1em
+}
+  table tr:nth-child(even){
+  background-color: #fff;
+}
+}
+  </style>
     <head>
         <meta charset="UTF-8">
-        <title>投票結果</title>
+        <title>投票結果</title>    
+        {% include 'queen/Include-File.html' %} 
     </head>
     <body>
-      <div id="container" style="width: 75%;">
-        <canvas id="pie-chart"></canvas>
-      </div>
+
+      <!--<div id="container" style="width: 75%;">-->
+      <!--  <canvas id="pie-chart"></canvas>-->
+      <!--</div>-->
+      
+    <!--  <table>-->
+  
+    <!--    <thead>-->
+    <!--        <tr>-->
+    <!--            <td>順位</td>-->
+    <!--            <th scope="col">候補者名</th>-->
+    <!--            <th scope="col">得票数</th>-->
+    <!--        </tr>-->
+    <!--    </thead>-->
+    <!--    <tbody>    {% for item in obj %}-->
+    <!--        <tr>-->
+    <!--            <th>{{ forloop.counter }}</th>-->
+    <!--            <td data-label="候補者名" class="txt">{{item.candidateCd.name}}</td>-->
+    <!--            <td data-label="得票数" class="price">{{item.totalCount}}</td>-->
+    <!--        </tr>        {% endfor %}-->
+    <!--    </tbody>-->
+    <!--</table>   -->
     
+    <div class="leftbox">
+    <table>
+    <thead>
+      <tr>
+        <th id="rank">順位│前回</th>
+                <th id="name">候補者</th>
+                        <th id="times">得票数</th>
+              </tr>
+    </thead>
+
+    <tbody>{% for item in obj %}
+        <tr class="rank" id="rank10">
+  
+          <td headers="rank" class="rank_">
+            <span class="rank_td">{{ item.nowrank }}</span>
+                        <span class="compare"><a><img class="before" src="/static/img/tohyo/sozai/{{ item.before }}.png"></a></span>
+                        <span class="lastrank">({{item.lastrank}})</span>
+                        <!--<a><img class="before" src="/static/img/tohyo/sozai/{{ item.before }}.png"></a>-->
+                      </td>
+          <td headers="name" class="name_td">
+                        <a><img class="icon" src="/media/{{ item.icon }}" alt="画像URL"></a>
+            <!--<div class="name_detail">-->
+                           <a href="/detail/{{item.nameKN}}">{{item.name}}</a>
+            <!--</div>-->
+          </td>
+            <td headers="tokuhyo" class="tokuhyo">{{item.totalCount}}</td>
+          </tr>
+          {% endfor %}
+<!--           -->
+  </div>
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
       <script src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
       <script>

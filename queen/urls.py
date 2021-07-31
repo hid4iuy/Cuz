@@ -7,4 +7,5 @@ urlpatterns = [
     path('detail/<nameKN>', detailViews.as_view(), name='detail'),
     path('result', views.resultViews, name='result'),
     path('vote/<uuid>', views.vote, name='votecan'),
+    path('lastrank' , views.lastrank ),
 ]

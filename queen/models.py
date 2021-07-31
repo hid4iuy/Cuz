@@ -20,6 +20,8 @@ class CANDIDATE(COMMON):
     partyCd = models.ForeignKey('PARTY', on_delete=models.SET_NULL, verbose_name='所属', blank=True, null=True)
     mail = models.EmailField(verbose_name='メールアドレス', blank=True, null=True)
     link = models.URLField(verbose_name='リンク', blank=True, null=True)
+    icon = models.ImageField(verbose_name='アイコン', blank=True, null=True)
+    image_dtl = models.ImageField(verbose_name='詳細画像', blank=True, null=True)
     
     def __str__(self):
         return str(self.name)
@@ -79,6 +81,7 @@ class VOTE(COMMON):
     femaleCount = models.PositiveIntegerField(verbose_name='女性得票数', default=0)
     underEighteenCount = models.PositiveIntegerField(verbose_name='未成年得票数', default=0)
     overEighteenCount = models.PositiveIntegerField(verbose_name='成年得票数', default=0)
+    lastrank = models.PositiveIntegerField(verbose_name='前回順位', default=0)
     
     def __str__(self):
         return str(self.candidateCd.name)
