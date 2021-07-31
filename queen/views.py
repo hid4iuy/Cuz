@@ -12,15 +12,29 @@ import logging,datetime
 def resultViews(request):
     labels = []
     data = []
+    dict = []
 
     queryset = VOTE.objects.all().order_by('totalCount').reverse()
     for vote in queryset:
         labels.append(vote.candidateCd.name)
         data.append(vote.totalCount)
-
+        dict.append(vote.candidateCd.name)
+    for i in range(len(queryset)):
+        vote=queryset[i]
+        nowrank = i+1
+        lastrank = vote.lastrank
+        if nowrank > lastrank:
+            before = 'down'
+        elif nowrank < lastrank:
+            before = 'up'
+        else :    
+            before = 'keep'
+        dict[i] = {'name' : vote.candidateCd.name,'nameKN' : vote.candidateCd.nameKN,'icon' : vote.candidateCd.icon, 'totalCount' : vote.totalCount , 'nowrank' : nowrank ,'lastrank' : lastrank, 'before' : before}
+    # print(dict)
     return render(request, 'queen/result.html', {
         'labels': labels,
         'data': data,
+        'obj': dict,
     })
         
 class detailViews(DetailView):
@@ -32,7 +46,9 @@ class detailViews(DetailView):
         candidate = context.get("object")
         context.update({
             'image': IMAGE.objects.filter(candidateCd=candidate.uuid),
+            # [0].image,
         })
+        print(context)
         return context
         
     def get_object(self):
@@ -75,3 +91,12 @@ def vote(request, uuid):
 def index(request):
     return render(request, 'queen/top.html')
 
+def lastrank(request):
+    
+    queryset = VOTE.objects.all().order_by('totalCount').reverse()
+    for i in range(len(queryset)):
+        vote=queryset[i]
+        vote.lastrank = i+1
+        vote.save()
+        
+    return render(request, 'queen/top.html')
