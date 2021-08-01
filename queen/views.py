@@ -41,15 +41,15 @@ class detailViews(DetailView):
     model = CANDIDATE
     template_name = 'queen/detail.html'
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        candidate = context.get("object")
-        context.update({
-            'image': IMAGE.objects.filter(candidateCd=candidate.uuid),
-            # [0].image,
-        })
-        print(context)
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     candidate = context.get("object")
+    #     context.update({
+    #         'image': IMAGE.objects.filter(candidateCd=candidate.uuid),
+    #         # [0].image,
+    #     })
+    #     print(context)
+    #     return context
         
     def get_object(self):
         return CANDIDATE.objects.get(nameKN=self.kwargs['nameKN'])

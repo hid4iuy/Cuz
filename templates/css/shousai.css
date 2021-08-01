@@ -6,44 +6,34 @@
   border-style: solid;
   border-width: 0;
 }
-
 /* Document */
 /* ============================================ */
-
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  * 3. Remove gray overlay on links for iOS.
  */
-
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-tap-highlight-color: transparent; /* 3*/
 }
-
 /* Sections */
 /* ============================================ */
-
 /**
  * Remove the margin in all browsers.
  */
-
 body {
   margin: 0;
 }
-
 /**
  * Render the `main` element consistently in IE.
  */
-
 main {
   display: block;
 }
-
 /* Vertical rhythm */
 /* ============================================ */
-
 p,
 table,
 blockquote,
@@ -55,10 +45,8 @@ figure,
 dl {
   margin: 0;
 }
-
 /* Headings */
 /* ============================================ */
-
 h1,
 h2,
 h3,
@@ -70,36 +58,28 @@ h6 {
   font-weight: inherit;
   margin: 0;
 }
-
 /* Lists (enumeration) */
 /* ============================================ */
-
 ul,
 ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 /* Lists (definition) */
 /* ============================================ */
-
 dt {
   font-weight: bold;
 }
-
 dd {
   margin-left: 0;
 }
-
 /* Grouping content */
 /* ============================================ */
-
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
-
 hr {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
@@ -109,78 +89,62 @@ hr {
   clear: both;
   color: inherit;
 }
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-
 pre {
   font-family: monospace, monospace; /* 1 */
   font-size: inherit; /* 2 */
 }
-
 address {
   font-style: inherit;
 }
-
 /* Text-level semantics */
 /* ============================================ */
-
 /**
  * Remove the gray background on active links in IE 10.
  */
-
 a {
   background-color: transparent;
   text-decoration: none;
   color: inherit;
 }
-
 /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
-
 abbr[title] {
   text-decoration: underline; /* 2 */
   text-decoration: underline dotted; /* 2 */
 }
-
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
-
 b,
 strong {
   font-weight: bolder;
 }
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-
 code,
 kbd,
 samp {
   font-family: monospace, monospace; /* 1 */
   font-size: inherit; /* 2 */
 }
-
 /**
  * Add the correct font size in all browsers.
  */
-
 small {
   font-size: 80%;
 }
-
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
-
 sub,
 sup {
   font-size: 75%;
@@ -188,36 +152,28 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
-
 sub {
   bottom: -0.25em;
 }
-
 sup {
   top: -0.5em;
 }
-
 /* Embedded content */
 /* ============================================ */
-
 /**
  * Prevent vertical alignment issues.
  */
-
 img,
 embed,
 object,
 iframe {
   vertical-align: bottom;
 }
-
 /* Forms */
 /* ============================================ */
-
 /**
  * Reset form fields to make them styleable
  */
-
 button,
 input,
 optgroup,
@@ -235,47 +191,38 @@ textarea {
   border-radius: 0;
   text-align: inherit;
 }
-
 /**
  * Reset radio and checkbox appearance to preserve their look in iOS.
  */
-
 [type="checkbox"] {
   -webkit-appearance: checkbox;
   appearance: checkbox;
 }
-
 [type="radio"] {
   -webkit-appearance: radio;
   appearance: radio;
 }
-
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
-
 button,
 input {
   /* 1 */
   overflow: visible;
 }
-
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
-
 button,
 select {
   /* 1 */
   text-transform: none;
 }
-
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
-
 button,
 [type="button"],
 [type="reset"],
@@ -284,18 +231,15 @@ button,
   -webkit-appearance: none;
   appearance: none;
 }
-
 button[disabled],
 [type="button"][disabled],
 [type="reset"][disabled],
 [type="submit"][disabled] {
   cursor: default;
 }
-
 /**
  * Remove the inner border and padding in Firefox.
  */
-
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -303,51 +247,41 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
-
 /**
  * Restore the focus styles unset by the previous rule.
  */
-
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-
 /**
  * Remove arrow in IE10 & IE11
  */
-
 select::-ms-expand {
   display: none;
 }
-
 /**
  * Remove padding
  */
-
 option {
   padding: 0;
 }
-
 /**
  * Reset to invisible
  */
-
 fieldset {
   margin: 0;
   padding: 0;
   min-width: 0;
 }
-
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
-
 legend {
   color: inherit; /* 2 */
   display: table; /* 1 */
@@ -355,528 +289,249 @@ legend {
   padding: 0; /* 3 */
   white-space: normal; /* 1 */
 }
-
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
-
 progress {
   vertical-align: baseline;
 }
-
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
-
 textarea {
   overflow: auto;
 }
-
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-
 /**
  * 1. Correct the outline style in Safari.
  */
-
 [type="search"] {
   outline-offset: -2px; /* 1 */
 }
-
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
-
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
-
 /**
  * Clickable labels
  */
-
 label[for] {
   cursor: pointer;
 }
-
 /* Interactive */
 /* ============================================ */
-
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
-
 details {
   display: block;
 }
-
 /*
  * Add the correct display in all browsers.
  */
-
 summary {
   display: list-item;
 }
-
 /*
  * Remove outline for editable content.
  */
-
 [contenteditable] {
   outline: none;
 }
-
 /* Table */
 /* ============================================ */
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 caption {
   text-align: left;
 }
-
 td,
 th {
   vertical-align: top;
   padding: 0;
 }
-
 th {
   text-align: left;
   font-weight: bold;
 }
-
 /* Misc */
 /* ============================================ */
-
 /**
  * Add the correct display in IE 10+.
  */
-
 template {
   display: none;
 }
-
 /**
  * Add the correct display in IE 10.
  */
-
 [hidden] {
   display: none;
 }
-
 {% load static %} 
-
         body{
 background-image: url("{% static "img/tohyo/sozai/242669_s.jpg" %}");
     }
-    
-.img-wrap{
+	.tohyobotan{
 		text-align: center;
 		padding-top: 100px;
 	}
-
-	.BG1{
-		text-align: center;
-		top: 55px;
-		filter: drop-shadow(1px 1px 10px rgba(0,0,0,0.6));
-		position: relative;
+.sugadata{
+    position: absolute;
+    top: 650px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+padding-bottom: 100px;
+}
+  .shosai{
+    position: relative;
+    top: 390px;
+	left: 48%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color:white;    
+    font-size:12px;
+	line-height:21px;
+    font-weight: 300;
+	width: 20em;
+    font-family:"Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+	margin-bottom: -500px;
+  }
+  .prof{
+    position: relative;
+    top: 254px;
+	left: 49%;
+    color:white;    
+    font-size:17px;
+	line-height:47px;
+    font-weight: 600;
+    font-family:"Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  width: 20em;
+  }
+  .section{
+    position: relative;
+    top:920px;
+	font-weight: 600;
+	font-family:"Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 	}
-	
-		.waku{
-	text-align: center;
-	position: relative;
-	top: -3311px;
-	left: 1px;
-	pointer-events: none;
-	}
-			.name{
-	text-align: center;
-	position: relative;
-	top: -4696px;
-	left: 3px;
-	pointer-events: none;
-	}
-	
-	.suga_face{
-	text-align: center;
-	position: relative;
-    top: -855px;
-    left: 95px;
-  width: 140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
+.oneArea {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 624px;
+  margin: 30px auto;
+  padding: 0 10px;
 }
-		.suga_face{
-  transition-duration: 0.3s;
+.oneArea .onebox {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
-	.suga_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
+.oneArea .onebox:nth-child(even) {
+  flex-direction: row-reverse;
+  margin-top: 30px;
 }
-	
-		.hiroyuki_face{
-	text-align: center;
-	position: relative;
-    top: -400px;
-    left: 230px;
-  width: 140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
+.oneArea .onebox .imgArea {
+  width: 18%;
+  position: relative;
 }
-		.hiroyuki_face{
-  transition-duration: 0.3s;
+.oneArea .onebox .imgArea img {
+  width: 100%;
+  max-width: 130px;
+  position: absolute;
+  top: 0;
 }
-	.hiroyuki_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
+.oneArea .onebox:nth-child(odd) .imgArea img {
+  left: 0;
+  padding-right: 30px;
 }
-	.kounotarou_face{
-	text-align: center;
-	position: relative;
-    top: -1206px;
-    left: 120px;
-  width: 300px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
+.oneArea .onebox:nth-child(even) .imgArea img {
+  right: 0;
+  padding-left: 30px;
 }
-		.kounotarou_face{
-  transition-duration: 0.3s;
+.oneArea .onebox .fukiArea {
+  width: 53%;
 }
-	.kounotarou_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
+.oneArea .onebox .fukidasi {
+  width: 100%;
+  position: relative;
+  padding: 25px;
+  background-color: #ffffff;
+  font-size: 18px;
+  color: #000000;
+  border-radius: 52px;
+  box-sizing: border-box;
+border: 2px solid;
 }
-		.ishiba_face{
-	text-align: center;
-	position: relative;
-    top: -1197px;
-    left: 224px;
-  width: 140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
+.oneArea .onebox .fukidasi::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 26px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 30px 15px 0;
+  border-color: transparent #ffffff transparent transparent;
 }
-		.ishiba_face{
-  transition-duration: 0.3s;
+.oneArea .onebox:nth-child(odd) .fukidasi::before {
+  left: -20px;
 }
-	.ishiba_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
+.oneArea .onebox:nth-child(even) .fukidasi {
+  background-color: #ffffff;
 }
-			.abe_face{
-	text-align: center;
-	position: relative;
-    top: -1188px;
-    left:185px;
-  width:200px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
+.oneArea .onebox:nth-child(even) .fukidasi::before {
+  right: -20px;
+  border-color: transparent #ffffff transparent transparent;
+  transform: rotate(180deg);
 }
-		.abe_face{
-  transition-duration: 0.3s;
+@media screen and (max-width: 1024px) {
+  .oneArea .onebox .imgArea img {
+    max-width: 70%;
+  }
+  .oneArea .onebox .fukidasi {
+    padding: 15px;
+    font-size: 14px;
+  }
+  .oneArea .onebox .fukidasi::before {
+    top: 8px;
+  }
 }
-	.abe_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
-}
-			.koizumi_face{
-	text-align: center;
-	position: relative;
-    top: -1183px;
-    left:239px;
-  width:110px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-		.koizumi_face{
-  transition-duration: 0.3s;
-}
-	.koizumi_face:hover{
-  transform: scale(1.1);
-  transition-duration: 0.3s;
-}
-.edano_face{
-	text-align: center;
-	position: relative;
-    top: -1365px;
-    left:9px;
-  width:130px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-.edano_face{
-  transition-duration: 0.3s;
-}
-.edano_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-}
-.renhou_face{
-	text-align: center;
-	position: relative;
-    top: -1378px;
-    left:-200px;
-  width:130px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-.renhou_face{
-  transition-duration: 0.3s;
-}
-.renhou_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-	
-.kan_face{
-	text-align: center;
-	position: relative;
-    top: -1661px;
-    left:-210px;
-  width:140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-.kan_face{
-  transition-duration: 0.3s;
-}
-.kan_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-	
-.kaieda_face{
-	text-align: center;
-	position: relative;
-    top: -1751px;
-    left:-93px;
-  width:140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-.kaieda_face{
-  transition-duration: 0.3s;
-}
-.kaieda_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-.yamaguchi_face{
-	text-align: center;
-	position: relative;
-    top: -1559px;
-    left: 0px;
-  width:140px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-.yamaguchi_face{
-  transition-duration: 0.3s;
-}
-.yamaguchi_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-	.shii_face{
-	text-align: center;
-	position: relative;
-    top: -1677px;
-    left: -206px;
-  width:190px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-.shii_face{
-  transition-duration: 0.3s;
-}
-.shii_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-	
-	.toru_face{
-	text-align: center;
-	position: relative;
-    top: -1821px;
-    left: 179px;
-  width:210px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.toru_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-		.matui_face{
-	text-align: center;
-	position: relative;
-    top: -2054px;
-    left: 129px;
-  width:150px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.matui_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-	.tamaki_face{
-	text-align: center;
-	position: relative;
-    top: -2133px;
-    left: 0px;
-  width:150px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.tamaki_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-		.takesi_face{
-	text-align: center;
-	position: relative;
-    top: -1889px;
-    left: 97px;
-  width:150px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.takesi_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-			.yuriko_face{
-	text-align: center;
-	position: relative;
-    top: -2134px;
-    left: 137px;
-  width:110px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.yuriko_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-
-			.jakucho_face{
-	text-align: center;
-	position: relative;
-    top: -2238px;
-    left: 238px;
-  width:110px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.jakucho_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-			.hikakin_face{
-	text-align: center;
-	position: relative;
-    top: -2347px;
-    left: -55px;
-  width:150px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.hikakin_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-			.saori_face{
-	text-align: center;
-	position: relative;
-    top: -2442px;
-    left: -171px;
-  width:110px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.saori_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-			.shuzo_face{
-	text-align: center;
-	position: relative;
-    top: -2361px;
-    left: -64px;
-  width:160px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
-.shuzo_face:hover{
-  transform: scale(1.08);
-  transition-duration: 0.3s;
-	}
-		.fukidasi{
-	text-align: center;
-	position: relative;
-    top: -4390px;
-    left: -130px;
-  margin: 0 auto;
-  overflow: hidden;
-pointer-events: none;
-}
-#image1 {
-transition: all 1s 0s ease;
-}
-.on {
-transform: scale(1.0, 1.0);
-}
-.off {
-transform: scale(0, 0) ;
+@media screen and (max-width: 420px) {
+  .oneArea {
+    margin: 30px auto;
+  }
+  .oneArea .onebox:nth-child(even) {
+    margin-top: 5px;
+  }
+  .oneArea .onebox .imgArea {
+    width: 20%;
+  }
+  .oneArea .onebox .fukidasi {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
 }
 </style>

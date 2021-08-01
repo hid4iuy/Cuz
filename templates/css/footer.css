@@ -1,0 +1,53 @@
+<style>
+#footer02 {
+  background: #222;
+  font-weight: 600;
+	font-family:"Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+.ie #footer02 .logo img,
+#footer02 .logo {
+  margin-left: 50px;
+  display: inline-block;
+  width: 120px;
+}
+#footer02 .nav li a {
+  padding: 15px;
+  color: #ccc;
+}
+#footer02 .c-btn {
+  margin-right: 50px;
+  margin-left: 15px;
+  color: #ccc;
+}
+@media screen and (min-width: 641px) {
+  #footer02 .logo {
+    padding: 10px 0;
+  }
+  #footer02 .wrap {
+    padding: 20px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #footer02 .cont {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  #footer02 .nav {
+    display: inline-block;
+  }
+  #footer02 .nav li {
+    display: inline-block;
+  }
+  #footer02 .nav li a:hover {
+    color: #ca353b;
+  }
+}
+</style>
