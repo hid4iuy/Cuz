@@ -17,9 +17,22 @@ class CANDIDATE(COMMON):
         )
     sex = models.PositiveSmallIntegerField(verbose_name='性別', choices=SEX_CHOICES)
     birthYMD = models.DateField(verbose_name='生年月日')
+    BLOOD_CHOICES = (
+        ('A', 'A'),
+        ('B', 'B'),
+        ('O', 'O'),
+        ('AB', 'AB'),
+        ('不明','不明')
+        )
+    bloodType = models.CharField(verbose_name='血液型', choices=BLOOD_CHOICES, max_length=3, default='不明')
+    hobby = models.CharField(verbose_name='趣味', blank=True, null=True,max_length=20)
     partyCd = models.ForeignKey('PARTY', on_delete=models.SET_NULL, verbose_name='所属', blank=True, null=True)
     mail = models.EmailField(verbose_name='メールアドレス', blank=True, null=True)
     link = models.URLField(verbose_name='リンク', blank=True, null=True)
+    profile = models.CharField(verbose_name='プロフィール', blank=True, null=True, max_length=140)
+    comment1 = models.CharField(verbose_name='コメント1',blank=True, null=True,max_length=50)
+    comment2 = models.CharField(verbose_name='コメント1',blank=True, null=True,max_length=50)
+    comment3 = models.CharField(verbose_name='コメント1',blank=True, null=True,max_length=50)
     icon = models.ImageField(verbose_name='アイコン', blank=True, null=True)
     image_dtl = models.ImageField(verbose_name='詳細画像', blank=True, null=True)
     

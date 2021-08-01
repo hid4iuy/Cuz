@@ -1,96 +1,22 @@
-<candidate>
-    {% load static %}
-    <style>
-        table.detail {
-        width: 500px;
-        margin: 0 auto;
-        border-collapse: separate;
-        border-spacing: 0px 15px;
-        font-size: 12px;
-        }
-        
-        table.detail th,
-        table.detail td {
-        padding: 10px;
-        }
-        
-        table.detail th {
-        background: #295890;
-        vertical-align: middle;
-        text-align: left;
-        width: 100px;
-        overflow: visible;
-        position: relative;
-        color: #fff;
-        font-weight: normal;
-        font-size: 15px;
-        }
-        
-        table.detail th:after {
-        left: 100%;
-        top: 50%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        border-color: rgba(136, 183, 213, 0);
-        border-left-color: #295890;
-        border-width: 10px;
-        margin-top: -10px;
-        }
-        
-        table.detail td {
-        background: #f8f8f8;
-        width: 360px;
-        padding-left: 20px;
-        }
-        img {
-        border-radius: 50%;  /*角を丸くする指定*/
-        width: 100px;  /*横幅*/
-        height: 100px;  /*縦幅*/
-        }
-    </style>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    crossorigin="anonymous">
-    <img src="{% static "{{ image }}" %}" />
-    <table class="detail">
-        <tbody>
-            <tr>
-                <th class="arrow_box">立候補者名</div></th>
-                <td>{{ candidate.name }}</td>
-            </tr>
-            <tr>
-                <th class="arrow_box">性別</div></th>
-                <td>{{ candidate.get_sex_display }}</td>
-            </tr>
-            <tr>
-                <th class="arrow_box">生年月日</div></th>
-                <td>{{ candidate.birthYMD }}</td>
-            </tr>
-            <tr>
-                <th class="arrow_box">所属</div></th>
-                <td>{{ candidate.partyCd.partyName }}</td>
-            </tr>
-            <tr>
-                <th class="arrow_box">メール</div></th>
-                <td>{{ candidate.mail }}</td>
-            </tr>
-            <tr>
-                <th class="arrow_box">詳細</div></th>
-                <td>
-                    <a href={{ candidate.link }}>リンク</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<!-- Button trigger modal -->
-           <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Modal">投票する</button>
-  <!-- モーダルの設定 -->
-  
+<!doctype html>
+ {% load static %} 
+<html>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+</style>
+<head>
+<meta charset="UTF-8">
+<title>総理大臣に相応しいと思う人は誰ですか？</title>
+ {% include 'css/shousai.css' %}
+</head>
+<body onload="func1()">
+{% include 'queen/Include-File.html' %} 
+<div class="tohyobotan">
+<!--Button trigger modal -->
+ <img src="{% static "img/tohyo/sozai/tohyobotan.png" %}"style="cursor:pointer" alt="投票する！" data-toggle="modal" data-target="#Modal"/>
+
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
-    <!--以下modal-dialogのCSSの部分で modal-lgやmodal-smを追加するとモーダルのサイズを変更することができる-->
+<!--以下modal-dialogのCSSの部分で modal-lgやmodal-smを追加するとモーダルのサイズを変更することができる-->
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -115,8 +41,6 @@
             </select>
         </div>
         <div class="modal-footer">
-        </div>
-        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">やめる</button>
 <!--FORM送信-->
             <input type="submit" value="投票" class="btn btn-primary">
@@ -125,10 +49,45 @@
       </div>
     </div>
   </div>
-        </tr>
-        </table>
+</div>
+
+<div class="sugadata">
+<img src="/media/{{object.image_dtl}}" width="700px" alt="haikeigazou"/>
+</div>
+<div class="prof">
+{{object.birthYMD}}<br>
+{{object.bloodType}}型<br>
+{{object.hobby}}<br>
+</div>
+<div class="shosai">
+{{object.profile}}
+</div>
+<div class="section">
+  <div class="oneArea">
+    <div class="onebox inview_re LeftToRight">
+      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
+      <div class="fukiArea"><div class="fukidasi">{{object.comment1}}</div></div>
+    </div>
+    <div class="onebox inview_re RightToLeft delay_a">
+      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk2.png" %}" alt="JK2"></div>
+      <div class="fukiArea"><div class="fukidasi">{{object.comment2}}</div></div>
+    </div>
+  </div>
+  <div class="oneArea">
+    <div class="onebox inview_re LeftToRight delay_b">
+      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
+      <div class="fukiArea"><div class="fukidasi">{{object.comment3}}</div></div>
+    </div>
+    <div class="onebox inview_re RightToLeft delay_c">
+      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk2.png" %}" alt="JK2"></div>
+      <div class="fukiArea"><div class="fukidasi">詳しく知りたい人は<a href= "{{object.link}}" target="_blank" ><font color="#1eb9ee">こちら</font></a>〜！</div></div>
+    </div>
+  </div>
+    {% include 'queen/footer.html' %} 
+</div>
+</body>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
- 
-</candidate>
+ </html>
