@@ -4,16 +4,18 @@ import plotly.express as px
 from django_pandas.io import read_frame
 from django.shortcuts import render, redirect
 from plotly.offline import plot as p
-from queen.models import VOTE ,CANDIDATE ,AREA, IMAGE
+from queen.models import VOTE ,CANDIDATE ,AREA, IMAGE, COMMENTS
 from django.http import HttpResponse,HttpResponseRedirect
-from .forms import CandidateForm
+from .forms import CandidateForm,CommentForm
+from django.db.models import Max
 import logging,datetime
+from django.http.response import JsonResponse
 
 def resultViews(request):
     labels = []
     data = []
     dict = []
-
+    comments = COMMENTS.objects.all().order_by('posted_at').reverse()
     queryset = VOTE.objects.all().order_by('totalCount').reverse()
     for vote in queryset:
         labels.append(vote.candidateCd.name)
@@ -31,10 +33,22 @@ def resultViews(request):
             before = 'keep'
         dict[i] = {'name' : vote.candidateCd.name,'nameKN' : vote.candidateCd.nameKN,'icon' : vote.candidateCd.icon, 'totalCount' : vote.totalCount , 'nowrank' : nowrank ,'lastrank' : lastrank, 'before' : before}
     # print(dict)
+    if request.method == "POST":
+    # データベースに投稿されたコメントを保存
+        post = COMMENTS()
+        post.cmt_user = request.POST["comment_user"]
+        post.cmt_text = request.POST["comment_text"]
+        # if request.POST["comment_parent"] is not None:
+        #     post.cmt_parent = request.POST["comment_parent"]
+        post.cmt_id = COMMENTS.objects.count() + 1
+        post.save()
+
     return render(request, 'queen/result.html', {
         'labels': labels,
         'data': data,
         'obj': dict,
+        'comments': comments,
+        'form':CommentForm(),
     })
         
 class detailViews(DetailView):
@@ -64,7 +78,7 @@ def vote(request, uuid):
     today = now.strftime("%Y/%m/%d")
     lastpoll = request.COOKIES.get('lastpoll')
     if today == lastpoll:
-        response = HttpResponse('本日は投票済みです')
+        response = render(request, 'queen/votefin.html', params)
         return response
 
     response = render(request, 'queen/voteaft.html',params)
@@ -90,6 +104,9 @@ def vote(request, uuid):
 
 def index(request):
     return render(request, 'queen/top.html')
+    
+def votefin(request):
+    return render(request, 'queen/votefin.html')
 
 def lastrank(request):
     
@@ -100,3 +117,23 @@ def lastrank(request):
         vote.save()
         
     return render(request, 'queen/top.html')
+    
+def like(request,cmt_id):
+    comment = COMMENTS.objects.get(cmt_id=cmt_id)
+    comment.cmt_good += 1 # ここでいいねの数を増やす
+    comment.save() # 保存をする
+    return redirect(to='result')
+
+def bad(request,cmt_id):
+    comment = COMMENTS.objects.get(cmt_id=cmt_id)
+    comment.cmt_bad += 1 # ここでいいねの数を増やす
+    comment.save() # 保存をする
+    return redirect(to='result')
+
+def api_like(request,cmt_id):
+    comment = COMMENTS.objects.get(cmt_id=cmt_id)
+    comment.cmt_good += 1 # ここでいいねの数を増やす
+    comment.save() # 保存をする
+    # ここまでは like関数と同じ
+
+    return JsonResponse({"like":comment.cmt_good}) # <- ここが特別

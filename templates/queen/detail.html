@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>総理大臣に相応しいと思う人は誰ですか？</title>
- {% include 'css/shousai.css' %}
+{% include 'css/shousai.css' %}
 </head>
 <body onload="func1()">
 {% include 'queen/Include-File.html' %} 
@@ -25,25 +25,32 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style=line-height:30px;>
             {{candidate.name}}に投票しますか？<br>
-            よろしければ年齢と性別を教えて下さい。※未記入でも投票は可能です。
+            よろしければ<b>年齢</b>と<b>性別</b>を教えて下さい。※任意
             <form action="{% url 'votecan' candidate.uuid %}" method="post">
             {% csrf_token %}
-            <label for="age">年齢</label>
-            <input type="number" name="age" id="age" min="0" max="120"><br>
-            <label for="sex">性別</label>
-            <select name="sex"id="sex">
-            <option value="X">未回答</option>
+            <div class="cp_iptxt">
+            <label for="age">
+            <input type="number" placeholder="年齢" name="age" id="age" min="0" max="120"><br>
+            </label>
+            </div>
+            
+        <div class="center">
+            <select name="sex" id="sex" class="custom-select sources" placeholder="性別">
+            <option value="x">未回答</option>
             <option value="0">男</option>
             <option value="1">女</option>
             <option value="2">その他</option>
             </select>
         </div>
+            
+            
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">やめる</button>
 <!--FORM送信-->
-            <input type="submit" value="投票" class="btn btn-primary">
+            <input type="submit" value="投票" class="btn btn-primary" >
             </form>
         </div>
       </div>
