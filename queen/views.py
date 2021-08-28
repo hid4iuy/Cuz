@@ -38,8 +38,6 @@ def resultViews(request):
         post = COMMENTS()
         post.cmt_user = request.POST["comment_user"]
         post.cmt_text = request.POST["comment_text"]
-        # if request.POST["comment_parent"] is not None:
-        #     post.cmt_parent = request.POST["comment_parent"]
         post.cmt_id = COMMENTS.objects.count() + 1
         post.save()
 
@@ -54,17 +52,7 @@ def resultViews(request):
 class detailViews(DetailView):
     model = CANDIDATE
     template_name = 'queen/detail.html'
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     candidate = context.get("object")
-    #     context.update({
-    #         'image': IMAGE.objects.filter(candidateCd=candidate.uuid),
-    #         # [0].image,
-    #     })
-    #     print(context)
-    #     return context
-        
+       
     def get_object(self):
         return CANDIDATE.objects.get(nameKN=self.kwargs['nameKN'])
 
@@ -104,9 +92,6 @@ def vote(request, uuid):
 
 def index(request):
     return render(request, 'queen/top.html')
-    
-def votefin(request):
-    return render(request, 'queen/votefin.html')
 
 def lastrank(request):
     
@@ -120,20 +105,12 @@ def lastrank(request):
     
 def like(request,cmt_id):
     comment = COMMENTS.objects.get(cmt_id=cmt_id)
-    comment.cmt_good += 1 # ここでいいねの数を増やす
-    comment.save() # 保存をする
+    comment.cmt_good += 1
+    comment.save()
     return redirect(to='result')
 
 def bad(request,cmt_id):
     comment = COMMENTS.objects.get(cmt_id=cmt_id)
-    comment.cmt_bad += 1 # ここでいいねの数を増やす
-    comment.save() # 保存をする
+    comment.cmt_bad += 1
+    comment.save() 
     return redirect(to='result')
-
-def api_like(request,cmt_id):
-    comment = COMMENTS.objects.get(cmt_id=cmt_id)
-    comment.cmt_good += 1 # ここでいいねの数を増やす
-    comment.save() # 保存をする
-    # ここまでは like関数と同じ
-
-    return JsonResponse({"like":comment.cmt_good}) # <- ここが特別
