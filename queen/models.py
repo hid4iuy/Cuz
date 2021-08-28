@@ -31,8 +31,8 @@ class CANDIDATE(COMMON):
     link = models.URLField(verbose_name='リンク', blank=True, null=True)
     profile = models.CharField(verbose_name='プロフィール', blank=True, null=True, max_length=140)
     comment1 = models.CharField(verbose_name='コメント1',blank=True, null=True,max_length=50)
-    comment2 = models.CharField(verbose_name='コメント1',blank=True, null=True,max_length=50)
-    comment3 = models.CharField(verbose_name='コメント1',blank=True, null=True,max_length=50)
+    comment2 = models.CharField(verbose_name='コメント2',blank=True, null=True,max_length=50)
+    comment3 = models.CharField(verbose_name='コメント3',blank=True, null=True,max_length=50)
     icon = models.ImageField(verbose_name='アイコン', blank=True, null=True)
     image_dtl = models.ImageField(verbose_name='詳細画像', blank=True, null=True)
     
@@ -110,3 +110,18 @@ class IMAGE(COMMON):
     
     def __str__(self):
         return str(self.candidateCd.name)
+        
+# コメントテーブル        
+class COMMENTS(COMMON):
+    class Meta:
+        verbose_name ="コメント"
+        verbose_name_plural ="コメント"
+    cmt_id = models.PositiveIntegerField(verbose_name='コメントID' ,default=9999999)
+    cmt_user = models.CharField(verbose_name='名前', max_length=20)
+    cmt_text = models.TextField(verbose_name='本文',max_length=400)
+    cmt_good = models.PositiveIntegerField(verbose_name='good' ,default=0)
+    cmt_bad = models.PositiveIntegerField(verbose_name='bad' ,default=0)
+    # cmt_parent = models.IntegerField(verbose_name='親コメント')
+    posted_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.cmt_text

@@ -1,169 +1,20 @@
 <!DOCTYPE html>
-<html>
 {% load static %}
-  <style>
-
-  body {
-  /*font-family: "Open Sans", sans-serif;*/
-  font-weight: 600;
-	font-family:“Helvetica Neue”, “Helvetica”, “Hiragino Sans”, “Hiragino Kaku Gothic ProN”, “Arial”, “Yu Gothic”, “Meiryo”, sans-serif;
-  line-height: 1.25;
-  background-image: url({% static "img/tohyo/sozai/242669_s.jpg" %});
-  margin: 200px 0px 0px 0px;
-  padding: 0;
-}
-
-table {
-  border-collapse: collapse;
-  margin: 0 auto;
-  padding: 0;
-  table-layout: auto;
-  width: 650px;
-}
-table tr {
-  background-color: #CCC;
-  border-bottom: 1px solid #fff;
-}
-table tr:nth-child(even){
-  background-color: #eee;
-}
-table th,
-table td {
-  padding: .35em 0em;
-  border: solid 1px #fff;
-}
-table thead th {
-    font-size: .85em;
-    padding: 1em;
-}
-table thead tr{
-  background-color: #fd6767;
-  color:#fff;
-}
-table tbody th {
-  text-align: left;
-  font-size: .8em;
-}
-.rank_{
-   text-align: center;
-   font-family : "ヒラギノ角ゴ Pro W3","メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
-}
-.rank_td{
-   font-size: 30px;
-   font-weight: 900;
-}
-#rank{
-   text-align: left;
-   width: 93px;
-}
-.before{
-  width: 15%;
-}
-.tokuhyo{
-  text-align: right;
-  color: #0079c2;
-  font-weight: bold;
-}
-.lastrank{
-  font-size : 10px;
-}
-.compare:before{
-  content: '';
-  width : 100% ;
-  height : 1px;
-  background-color: #000;
-  display: block;
-}
-.icon{
-  height: 50px;
-  width: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1.5px solid #000;
-}
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-    width:100%
-  }
-  table th{
-    background-color: #fd6767;
-    display: block;
-    border-right: none;
-  }
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  table tr {
-    display: block;
-    margin-bottom: .625em;
-    border: 1px solid #fd6767;
-  }
-  table td {
-    border-bottom: 1px dotted #bbb;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-    position: relative;
-    padding: 1.5em 1em 1.5em 4em;
-    border-right: none;
-  }
-  
-  table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    position: absolute;
-    left: 10px;
-    color: #000;
-  }
-  table td:last-child {
-    border-bottom: 0;
-  }
-  table tbody th {
-    color: #fff;
-    padding: 1em
-}
-  table tr:nth-child(even){
-  background-color: #fff;
-}
-}
-  </style>
+<html>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <head>
         <meta charset="UTF-8">
         <title>投票結果</title>    
-        {% include 'queen/Include-File.html' %} 
+{% include 'css/result.css' %}
     </head>
     <body>
+      {% include 'queen/Include-File_no-reset.html' %} 
+<main>
+    <div class="jyuni">
+      <img src="{% static "img/tohyo/sozai/genzainojyuni.png" %}" width="300" alt="現在の順位！"/>
+    </div>
+<div class="main">
 
-      <!--<div id="container" style="width: 75%;">-->
-      <!--  <canvas id="pie-chart"></canvas>-->
-      <!--</div>-->
-      
-    <!--  <table>-->
-  
-    <!--    <thead>-->
-    <!--        <tr>-->
-    <!--            <td>順位</td>-->
-    <!--            <th scope="col">候補者名</th>-->
-    <!--            <th scope="col">得票数</th>-->
-    <!--        </tr>-->
-    <!--    </thead>-->
-    <!--    <tbody>    {% for item in obj %}-->
-    <!--        <tr>-->
-    <!--            <th>{{ forloop.counter }}</th>-->
-    <!--            <td data-label="候補者名" class="txt">{{item.candidateCd.name}}</td>-->
-    <!--            <td data-label="得票数" class="price">{{item.totalCount}}</td>-->
-    <!--        </tr>        {% endfor %}-->
-    <!--    </tbody>-->
-    <!--</table>   -->
-    
     <div class="leftbox">
     <table>
     <thead>
@@ -192,37 +43,40 @@ table tbody th {
             <td headers="tokuhyo" class="tokuhyo">{{item.totalCount}}</td>
           </tr>
           {% endfor %}
+          </table>
 <!--           -->
   </div>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-      <script src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
-      <script>
-    
-        var config = {
-          type: 'horizontalBar',
-          data: {
-            datasets: [{
-              data: {{ data|safe }},
-              label: '得票数'
-            }],
-            labels: {{ labels|safe }}
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-            colorschemes: {
-                scheme: 'brewer.Paired12'
-            }
-        }
-          }
-        };
-    
-        window.onload = function() {
-          var ctx = document.getElementById('pie-chart').getContext('2d');
-          window.myPie = new Chart(ctx, config);
-        };
-    
-      </script>
+
+  <div class='kokuban'>
+      <form action="" method="POST">
+        <p><label for="com" class='title'>コメント</label></p>
+        {% csrf_token %}
+        <div class="form-group col-5">ニックネーム<br>{{ form.comment_user }}</div>
+        <div class="form-group col-10">本文{{ form.comment_text }}</div>
+        <button type="submit"class="btn btn-success ">投稿</button>
+    </form>
+    {% for comment in comments %}
+    <p>
+        <div class='commet-area'>
+        <span class='cmt-id'>{{ comment.cmt_id }}  </span>
+        <span class='cmt-user'>{{ comment.cmt_user }} ({{ comment.posted_at }})
+            <form action="" method="post"style="display: inline">
+        {% csrf_token %}
+        <!--<input type="submit" name="good" value="good" id="good">-->
+        <!--<img class="good" src="/static/img/tohyo/sozai/good.png">{{ comment.cmt_good }}-->
+        <a href="{% url 'like' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/good.png">{{ comment.cmt_good }}</a>
+        <!--<a onclick="api_like()"><img class="good" src="/static/img/tohyo/sozai/good.png"><span id="like">{{ comment.cmt_good }}</span></a>-->
+        <a href="{% url 'bad' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/bad.png">{{ comment.cmt_bad }}</a>
+        <!--<img class="good" src="/static/img/tohyo/sozai/bad.png">{{ comment.cmt_bad }}-->
+    </form></span>
+        <div class='cmt-text'>{{ comment.cmt_text }}</div></div>
+        </p>
+    {% empty %}
+    <p>コメントはありません</p>
+    {% endfor %}
+  </div>
+    </div>
+    </main>
+        <!--{% include 'queen/footer.html' %}-->
     </body>
 </html>

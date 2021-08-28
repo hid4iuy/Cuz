@@ -4,17 +4,23 @@
   <head>
     <meta charset="UTF-8">
     <title>総理大臣に相応しいと思う人は誰ですか？</title>
+    {% include 'queen/Include-File.html' %} 
     {% include 'css/top.css' %}
-
   </head>
   <body onload="func1()">
-    {% include 'queen/Include-File.html' %} 
     <div class="img-wrap">
       <img src="{% static "img/tohyo/sozai/tohyositekudasai.png" %}" width="600" alt="総理大臣に相応しい人に投票してください"/>
     </div>
+    
+  <div class="twitter">
+      <a class="twitter-timeline" data-width="300" data-height="1000" href="https://twitter.com/cuz_seiji?ref_src=twsrc%5Etfw">Tweets by cuz_seiji</a> 
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+  
     <div class="BG1">
       <img src="{% static "img/tohyo/sozai/BG1.jpg" %}" alt="BG1"/>
     </div>
+    
     <div class="suga_face">
       <a href="/detail/スガヨシヒデ">
         <img src="{% static "img/tohyo/hito/suga_face.png" %}" width="140" alt="菅義偉の顔"/>
@@ -121,14 +127,17 @@
 		  </a>
 		</div>
     <div class="waku">
-  		<img src="{% static "img/tohyo/sozai/waku.png" %}" width="800" alt=""/>
+  		<img src="{% static "img/tohyo/sozai/waku_v2.png" %}" width="800" alt=""/>
 		</div>
     <div class="fukidasi">
   		<img src="{% static "img/tohyo/sozai/fukidasi1.png" %}" width="400" alt="" id="image1"/>
 		</div> 
     <div class="name">
-  		<img src="{% static "img/tohyo/sozai/name.png" %}" width="800" alt="" />
+  		<img src="{% static "img/tohyo/sozai/name_v2.png" %}" width="800" alt="" />
 		</div>
+		
+
+	
 	    {% include 'queen/footer.html' %} 
   
     <script>
