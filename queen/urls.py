@@ -10,4 +10,5 @@ urlpatterns = [
     path('lastrank' , views.lastrank ),
     path('result/like/<cmt_id>', views.like ,name='like'),
     path('result/bad/<cmt_id>', views.bad ,name='bad'),
+    path('reserve', views.reserve ,name='reserve'),
 ]
