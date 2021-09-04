@@ -1,100 +1,93 @@
 <!doctype html>
  {% load static %} 
 <html>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<style>
-</style>
-<head>
-<meta charset="UTF-8">
-<title>総理大臣に相応しいと思う人は誰ですか？</title>
-{% include 'css/shousai.css' %}
-</head>
-<body onload="func1()">
-{% include 'queen/Include-File.html' %} 
-<div class="tohyobotan">
-<!--Button trigger modal -->
- <img src="{% static "img/tohyo/sozai/tohyobotan.png" %}"style="cursor:pointer" alt="投票する！" data-toggle="modal" data-target="#Modal"/>
-
-<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
-<!--以下modal-dialogのCSSの部分で modal-lgやmodal-smを追加するとモーダルのサイズを変更することができる-->
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="Modal">投票確認</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" style=line-height:30px;>
-            {{candidate.name}}に投票しますか？<br>
-            よろしければ<b>年齢</b>と<b>性別</b>を教えて下さい。※任意
-            <form action="{% url 'votecan' candidate.uuid %}" method="post">
-            {% csrf_token %}
-            <div class="cp_iptxt">
-            <label for="age">
-            <input type="number" placeholder="年齢" name="age" id="age" min="0" max="120"><br>
-            </label>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8">
+    <title>総理大臣に相応しいと思う人は誰ですか？</title>
+    <link rel="icon" href="{% static 'icon/favicon.ico' %}">
+    {% include 'css/shousai.css' %}
+  </head>
+  <body onload="func1()">
+    {% include 'queen/Include-File.html' %} 
+    <div class="tohyobotan">
+      <!--Button trigger modal -->
+      <img src="{% static "img/tohyo/sozai/tohyobotan.png" %}"style="cursor:pointer" alt="投票する！" data-toggle="modal" data-target="#Modal"/>
+      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+      <!--以下modal-dialogのCSSの部分で modal-lgやmodal-smを追加するとモーダルのサイズを変更することができる-->
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Modal">投票確認</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            
-        <div class="center">
-            <select name="sex" id="sex" class="custom-select sources" placeholder="性別">
-            <option value="x">未回答</option>
-            <option value="0">男</option>
-            <option value="1">女</option>
-            <option value="2">その他</option>
-            </select>
-        </div>
-            
-            
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">やめる</button>
-<!--FORM送信-->
-            <input type="submit" value="投票" class="btn btn-primary" >
-            </form>
+            <div class="modal-body" style=line-height:30px;>
+              {{candidate.name}}に投票しますか？<br>
+              よろしければ<b>年齢</b>と<b>性別</b>を教えて下さい。※任意
+              <form action="{% url 'votecan' candidate.uuid %}" method="post">
+                {% csrf_token %}
+                <div class="cp_iptxt">
+                  <label for="age">
+                  <input type="number" placeholder="年齢" name="age" id="age" min="0" max="120"><br>
+                  </label>
+                </div>
+                <div class="center">
+                  <select name="sex" id="sex" class="custom-select sources" placeholder="性別">
+                    <option value="x">未回答</option>
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                    <option value="2">その他</option>
+                  </select>
+                </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">やめる</button>
+                <!--FORM送信-->
+                <input type="submit" value="投票" class="btn btn-primary" >
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="sugadata">
-<img src="/media/{{object.image_dtl}}" width="700px" alt="haikeigazou"/>
-</div>
-<div class="prof">
-{{object.birthYMD}}<br>
-{{object.bloodType}}型<br>
-{{object.hobby}}<br>
-</div>
-<div class="shosai">
-{{object.profile}}
-</div>
-<div class="section">
-  <div class="oneArea">
-    <div class="onebox inview_re LeftToRight">
-      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
-      <div class="fukiArea"><div class="fukidasi">{{object.comment1}}</div></div>
+    <div class="sugadata">
+      <img src="/media/{{object.image_dtl}}" width="700px" alt="haikeigazou"/>
     </div>
-    <div class="onebox inview_re RightToLeft delay_a">
-      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk2.png" %}" alt="JK2"></div>
-      <div class="fukiArea"><div class="fukidasi">{{object.comment2}}</div></div>
+    <div class="prof">
+      {{object.birthYMD}}<br>
+      {{object.bloodType}}型<br>
+      {{object.hobby}}<br>
     </div>
-  </div>
-  <div class="oneArea">
-    <div class="onebox inview_re LeftToRight delay_b">
-      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
-      <div class="fukiArea"><div class="fukidasi">{{object.comment3}}</div></div>
+    <div class="shosai">
+      {{object.profile}}
     </div>
-    <div class="onebox inview_re RightToLeft delay_c">
-      <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk2.png" %}" alt="JK2"></div>
-      <div class="fukiArea"><div class="fukidasi">詳しく知りたい人は<a href= "{{object.link}}" target="_blank" ><font color="#1eb9ee">こちら</font></a>〜！</div></div>
+    <div class="section">
+      <div class="oneArea">
+        <div class="onebox inview_re LeftToRight">
+          <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
+          <div class="fukiArea"><div class="fukidasi">{{object.comment1}}</div></div>
+        </div>
+        <div class="onebox inview_re RightToLeft delay_a">
+          <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk2.png" %}" alt="JK2"></div>
+          <div class="fukiArea"><div class="fukidasi">{{object.comment2}}</div></div>
+        </div>
+      </div>
+      <div class="oneArea">
+        <div class="onebox inview_re LeftToRight delay_b">
+          <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
+          <div class="fukiArea"><div class="fukidasi">{{object.comment3}}</div></div>
+        </div>
+        <div class="onebox inview_re RightToLeft delay_c">
+          <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk2.png" %}" alt="JK2"></div>
+          <div class="fukiArea"><div class="fukidasi">詳しく知りたい人は<a href= "{{object.link}}" target="_blank" ><font color="#1eb9ee">こちら</font></a>〜！</div></div>
+        </div>
+      </div>
+      {% include 'queen/footer.html' %} 
     </div>
-  </div>
-    {% include 'queen/footer.html' %} 
-</div>
-</body>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
- </html>
+  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</html>

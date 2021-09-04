@@ -1,9 +1,7 @@
 from django.views.generic import TemplateView,ListView,DetailView
 from django.db import models
-import plotly.express as px
 from django_pandas.io import read_frame
 from django.shortcuts import render, redirect
-from plotly.offline import plot as p
 from queen.models import VOTE ,CANDIDATE ,AREA, IMAGE, COMMENTS
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import CandidateForm,CommentForm

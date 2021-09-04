@@ -1,15 +1,13 @@
-
 {% include 'css/Include-File_no-reset.css' %}
-
 <header>
-       {% load static %}
- 		<div class="logo">
-  <img src="{% static "img/tohyo/sozai/headersenkyo.jpg" %}" width="250" height="28" alt="日本大統領選挙2021"/> 
-	</div>
- <nav class="nav">
-      <ul class="menu-group">
-        <li class="menu-item"><a href="{% url 'top' %}"><img src="{% static "img/tohyo/sozai/tohyo.jpg" %}" height="30" alt="投票！"/><a/></li>
-        <li class="menu-item"><a href="/result"><img src="{% static "img/tohyo/sozai/kekka.jpg" %}" height="30" alt="結果を見る"/></a></li>
-      </ul>
+  {% load static %}
+  <div class="logo">
+    <img src="{% static "img/tohyo/sozai/headersenkyo.jpg" %}" width="250" height="28" alt="日本大統領選挙2021"/> 
+  </div>
+  <nav class="nav">
+    <ul class="menu-group">
+      <li class="menu-item"><a href="{% url 'top' %}"><img src="{% static "img/tohyo/sozai/tohyo.jpg" %}" height="30" alt="投票！"/><a/></li>
+      <li class="menu-item"><a href="/result"><img src="{% static "img/tohyo/sozai/kekka.jpg" %}" height="30" alt="結果を見る"/></a></li>
+    </ul>
   </nav>
 </header>
