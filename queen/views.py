@@ -112,3 +112,6 @@ def bad(request,cmt_id):
     comment.cmt_bad += 1
     comment.save() 
     return redirect(to='result')
+    
+def reserve(request):
+    return render(request, 'queen/reserve.html')
