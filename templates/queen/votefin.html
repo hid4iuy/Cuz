@@ -1,22 +1,22 @@
-
 <!doctype html>
- {% load static %} 
+{% load static %} 
 <html>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <head>
-        <meta charset="UTF-8">
-        <title>本日は投票済です</title>
-         {% include 'queen/Include-File.html' %} 
-         {% include 'css/votefin.css' %}
-    </head>
-<body>
-<main>
-    <div class="section">
-      <div class="oneArea">
-        <div class="onebox inview_re LeftToRight">
-          <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
-          <div class="fukiArea"><div class="fukidasi">本日は投票済み！ありがとうね</div></div>
-        </div>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8">
+    <title>本日は投票済です</title>
+    <link rel="icon" href="{% static 'icon/favicon.ico' %}">
+    {% include 'queen/Include-File.html' %} 
+    {% include 'css/votefin.css' %}
+  </head>
+  <body>
+    <main>
+      <div class="section">
+        <div class="oneArea">
+          <div class="onebox inview_re LeftToRight">
+            <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk1.png" %}" alt="JK1"></div>
+            <div class="fukiArea"><div class="fukidasi">本日は投票済み！ありがとうね</div></div>
+          </div>
         <div class="onebox inview_re RightToLeft delay_a">
           <div class="imgArea"><img src="{% static "img/tohyo/sozai/jk2.png" %}" alt="JK2"></div>
           <div class="fukiArea"><div class="fukidasi">そんな必死になって投票するほどこのサイト面白かった？</div></div>
@@ -28,10 +28,10 @@
           <div class="fukiArea"><div class="fukidasi">意見や要望があったら<a href= "/result"><font color="#1eb9ee">コメント</font></a>か#日本大統領選挙 でツイートしてね！</div></div>
         </div>
       </div>
-</main>
-    {% include 'queen/footer.html' %} 
-    </div>
-</body>
+    </main>
+      {% include 'queen/footer.html' %} 
+      </div>
+  </body>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

@@ -1,82 +1,74 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <head>
-        <meta charset="UTF-8">
-        <title>投票結果</title>    
-{% include 'css/result.css' %}
-    </head>
-    <body>
-      {% include 'queen/Include-File_no-reset.html' %} 
-<main>
-    <div class="jyuni">
-      <img src="{% static "img/tohyo/sozai/genzainojyuni.png" %}" width="300" alt="現在の順位！"/>
-    </div>
-<div class="main">
-
-    <div class="leftbox">
-    <table>
-    <thead>
-      <tr>
-        <th id="rank">順位│前回</th>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8">
+    <title>投票結果</title>
+    <link rel="icon" href="{% static 'icon/favicon.ico' %}">
+    {% include 'css/result.css' %}
+  </head>
+  <body>
+    {% include 'queen/Include-File_no-reset.html' %} 
+    <main>
+      <div class="jyuni">
+        <img src="{% static "img/tohyo/sozai/genzainojyuni.png" %}" width="300" alt="現在の順位！"/>
+      </div>
+      <div class="main">
+        <div class="leftbox">
+          <table>
+            <thead>
+              <tr>
+                <th id="rank">順位│前回</th>
                 <th id="name">候補者</th>
-                        <th id="times">得票数</th>
+                <th id="times">得票数</th>
               </tr>
-    </thead>
-
-    <tbody>{% for item in obj %}
-        <tr class="rank" id="rank10">
-  
-          <td headers="rank" class="rank_">
-            <span class="rank_td">{{ item.nowrank }}</span>
-                        <span class="compare"><a><img class="before" src="/static/img/tohyo/sozai/{{ item.before }}.png"></a></span>
-                        <span class="lastrank">({{item.lastrank}})</span>
-                        <!--<a><img class="before" src="/static/img/tohyo/sozai/{{ item.before }}.png"></a>-->
-                      </td>
-          <td headers="name" class="name_td">
-                        <a><img class="icon" src="/media/{{ item.icon }}" alt="画像URL"></a>
-            <!--<div class="name_detail">-->
-                           <a href="/detail/{{item.nameKN}}">{{item.name}}</a>
-            <!--</div>-->
-          </td>
-            <td headers="tokuhyo" class="tokuhyo">{{item.totalCount}}</td>
-          </tr>
-          {% endfor %}
+            </thead>
+            <tbody>{% for item in obj %}
+              <tr class="rank" id="rank10">
+                <td headers="rank" class="rank_">
+                  <span class="rank_td">{{ item.nowrank }}</span>
+                  <span class="compare"><a><img class="before" src="/static/img/tohyo/sozai/{{ item.before }}.png"></a></span>
+                  <span class="lastrank">({{item.lastrank}})</span>
+                </td>
+                <td headers="name" class="name_td">
+                  <a><img class="icon" src="/media/{{ item.icon }}" alt="画像URL"></a>
+                  <a href="/detail/{{item.nameKN}}">{{item.name}}</a>
+                </td>
+                <td headers="tokuhyo" class="tokuhyo">{{item.totalCount}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
           </table>
-<!--           -->
-  </div>
-
-  <div class='kokuban'>
-      <form action="" method="POST">
-        <p><label for="com" class='title'>コメント</label></p>
-        {% csrf_token %}
-        <div class="form-group col-5">ニックネーム<br>{{ form.comment_user }}</div>
-        <div class="form-group col-10">本文{{ form.comment_text }}</div>
-        <button type="submit"class="btn btn-success ">投稿</button>
-    </form>
-    {% for comment in comments %}
-    <p>
-        <div class='commet-area'>
-        <span class='cmt-id'>{{ comment.cmt_id }}  </span>
-        <span class='cmt-user'>{{ comment.cmt_user }} ({{ comment.posted_at }})
-            <form action="" method="post"style="display: inline">
-        {% csrf_token %}
-        <!--<input type="submit" name="good" value="good" id="good">-->
-        <!--<img class="good" src="/static/img/tohyo/sozai/good.png">{{ comment.cmt_good }}-->
-        <a href="{% url 'like' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/good.png">{{ comment.cmt_good }}</a>
-        <!--<a onclick="api_like()"><img class="good" src="/static/img/tohyo/sozai/good.png"><span id="like">{{ comment.cmt_good }}</span></a>-->
-        <a href="{% url 'bad' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/bad.png">{{ comment.cmt_bad }}</a>
-        <!--<img class="good" src="/static/img/tohyo/sozai/bad.png">{{ comment.cmt_bad }}-->
-    </form></span>
-        <div class='cmt-text'>{{ comment.cmt_text }}</div></div>
-        </p>
-    {% empty %}
-    <p>コメントはありません</p>
-    {% endfor %}
-  </div>
-    </div>
+        </div>
+        <div class='kokuban'>
+          <form action="" method="POST">
+            <p>
+              <label for="com" class='title'>コメント</label>
+            </p>
+            {% csrf_token %}
+            <div class="form-group col-5">ニックネーム<br>{{ form.comment_user }}</div>
+            <div class="form-group col-10">本文{{ form.comment_text }}</div>
+            <button type="submit"class="btn btn-success ">投稿</button>
+          </form>
+          {% for comment in comments %}
+          <p>
+            <div class='commet-area'>
+              <span class='cmt-id'>{{ comment.cmt_id }}  </span>
+              <span class='cmt-user'>{{ comment.cmt_user }} ({{ comment.posted_at }})
+                <form action="" method="post"style="display: inline">
+                  {% csrf_token %}
+                  <a href="{% url 'like' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/good.png">{{ comment.cmt_good }}</a>
+                  <a href="{% url 'bad' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/bad.png">{{ comment.cmt_bad }}</a>
+                </form>
+              </span>
+            <div class='cmt-text'>{{ comment.cmt_text }}</div></div>
+          </p>
+          {% empty %}
+          <p>コメントはありません</p>
+          {% endfor %}
+        </div>
+      </div>
     </main>
-        <!--{% include 'queen/footer.html' %}-->
-    </body>
+  </body>
 </html>
