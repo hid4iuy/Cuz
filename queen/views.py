@@ -10,14 +10,14 @@ import logging,datetime
 from django.http.response import JsonResponse
 
 def resultViews(request):
-    labels = []
-    data = []
+    # labels = []
+    # data = []
     dict = []
     comments = COMMENTS.objects.all().order_by('posted_at').reverse()
     queryset = VOTE.objects.all().order_by('totalCount').reverse()
     for vote in queryset:
-        labels.append(vote.candidateCd.name)
-        data.append(vote.totalCount)
+        # labels.append(vote.candidateCd.name)
+        # data.append(vote.totalCount)
         dict.append(vote.candidateCd.name)
     for i in range(len(queryset)):
         vote=queryset[i]
@@ -40,8 +40,8 @@ def resultViews(request):
         post.save()
 
     return render(request, 'queen/result.html', {
-        'labels': labels,
-        'data': data,
+        # 'labels': labels,
+        # 'data': data,
         'obj': dict,
         'comments': comments,
         'form':CommentForm(),
