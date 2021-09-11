@@ -28,11 +28,19 @@
               <tr class="rank" id="rank10">
                 <td headers="rank" class="rank_">
                   <span class="rank_td">{{ item.nowrank }}</span>
-                  <span class="compare"><a><img class="before" src="/static/img/tohyo/sozai/{{ item.before }}.png"></a></span>
+                  <span class="compare"><a><img class="before" 
+          {% if item.before == "up" %}
+                    src="{% static "img/tohyo/sozai/up.png" %}"
+          {% elif item.before == "down" %}
+                    src="{% static "img/tohyo/sozai/down.png" %}"
+          {% else %}
+                    src="{% static "img/tohyo/sozai/keep.png" %}"
+          {% endif %}
+                    ></a></span>
                   <span class="lastrank">({{item.lastrank}})</span>
                 </td>
                 <td headers="name" class="name_td">
-                  <a><img class="icon" src="/media/{{ item.icon }}" alt="画像URL"></a>
+                  <a><img class="icon" src="{{ item.icon.url }}" alt="画像URL"></a>
                   <a href="/detail/{{item.nameKN}}">{{item.name}}</a>
                 </td>
                 <td headers="tokuhyo" class="tokuhyo">{{item.totalCount}}</td>
@@ -58,8 +66,8 @@
               <span class='cmt-user'>{{ comment.cmt_user }} ({{ comment.posted_at }})
                 <form action="" method="post"style="display: inline">
                   {% csrf_token %}
-                  <a href="{% url 'like' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/good.png">{{ comment.cmt_good }}</a>
-                  <a href="{% url 'bad' comment.cmt_id %}"><img class="good" src="/static/img/tohyo/sozai/bad.png">{{ comment.cmt_bad }}</a>
+                  <a href="{% url 'like' comment.cmt_id %}"><img class="good" src="{% static "img/tohyo/sozai/good.png" %}">{{ comment.cmt_good }}</a>
+                  <a href="{% url 'bad' comment.cmt_id %}"><img class="good" src="{% static "img/tohyo/sozai/bad.png" %}">{{ comment.cmt_bad }}</a>
                 </form>
               </span>
             <div class='cmt-text'>{{ comment.cmt_text }}</div></div>
