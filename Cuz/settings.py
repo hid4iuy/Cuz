@@ -24,10 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rxbh7pk9zd0=pb&k^02l89o6cd6g0!x0mktlj&20s4*9nn4kda'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    'e6782e38454b40ff84b343834fc869e5.vfs.cloud9.us-east-2.amazonaws.com'
+      'cuz.social',
+      'Cuzprod-env.eba-ucfunpms.ap-northeast-1.elasticbeanstalk.com'
 ]
 
 
@@ -129,28 +130,55 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INTERNAL_IPS = ['127.0.0.1']
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
-# For debugging 
-if DEBUG:
-    # will output to your console
-    logging.basicConfig(
-        level = logging.DEBUG,
-        format = '%(asctime)s %(levelname)s %(message)s',
-    )
-else:
-    # will output to logging file
-    logging.basicConfig(
-        level = logging.DEBUG,
-        format = '%(asctime)s %(levelname)s %(message)s',
-        filename = '/my_log_file.log',
-        filemode = 'a'
-    )
+from storages.backends.s3boto3 import S3Boto3Storage 
+from tempfile import SpooledTemporaryFile
+
+class CustomS3Boto3Storage(S3Boto3Storage):
+    def _save(self, name, content):
+        content.seek(0, os.SEEK_SET)
+        
+        with SpooledTemporaryFile() as content_autoclose:
+            content_autoclose.write(content.read()) 
+            return super(CustomS3Boto3Storage, self)._save(name, content_autoclose)
+
+# 画像は同ファイル名での上書きを許さない
+class MediaStorage(S3Boto3Storage):
+    location = 'media'
+    file_overwrite = False
+
+AWS_ACCESS_KEY_ID = "AKIARDLWXLU5XFUVBZEF"
+
+AWS_SECRET_ACCESS_KEY = "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"
+
+AWS_STORAGE_BUCKET_NAME = 'cuz-prod'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = { 
+    'CacheControl': 'max-age=86400',
+}
+
+#DEFAULT_FILE_STORAGE = 'Cuz.settings.CustomS3Boto3Storage'
+
+AWS_LOCATION = 'static'
+MEDIA_LOCATION = 'media'
+
+AWS_DEFAULT_ACL = None 
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'Cuz.settings.CustomS3Boto3Storage'
+
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, MEDIA_LOCATION)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+DEFAULT_FILE_STORAGE = 'Cuz.settings.MediaStorage'

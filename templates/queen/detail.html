@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <head>
     <meta charset="UTF-8">
-    <title>総理大臣に相応しいと思う人は誰ですか？</title>
+    <title>日本大統領選挙</title>
     <link rel="icon" href="{% static 'icon/favicon.ico' %}">
     {% include 'css/shousai.css' %}
   </head>
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="sugadata">
-      <img src="/media/{{object.image_dtl}}" width="700px" alt="haikeigazou"/>
+      <img src="{{object.image_dtl.url}}" width="700px" alt="haikeigazou"/>
     </div>
     <div class="prof">
       {{object.birthYMD}}<br>

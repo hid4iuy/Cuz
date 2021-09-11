@@ -5,7 +5,14 @@
         body{
 background-image: url("{% static "img/tohyo/sozai/242669_s.jpg" %}");
 	min-width: 1600px;
+	  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
     }
+    
+main {
+  flex: 1;
+}
     
 .img-wrap{
 		text-align: center;
