@@ -1,29 +1,26 @@
-<!doctype html>
-{% load static %} 
+<!doctype html> {% load static %}
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>日本大統領選挙</title>
-    <link rel="icon" href="{% static 'icon/favicon.ico' %}">
-    {% include 'queen/Include-File.html' %} 
-    {% include 'css/top.css' %}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5965428820968563"
-     crossorigin="anonymous"></script>
-  </head>
-    <main>
+
+<head>
+  <meta charset="UTF-8">
+  <title>日本大統領選挙</title>
+  <link rel="icon" href="{% static 'icon/favicon.ico' %}"> {% include 'queen/Include-File.html' %} {% include 'css/top.css' %}
+</head>
+<main>
+
   <body onload="func1()">
     <div class="img-wrap">
-      <img src="{% static "img/tohyo/sozai/tohyositekudasai.png" %}" width="600" alt="総理大臣に相応しい人に投票してください"/>
+      <img src="{% static " img/tohyo/sozai/tohyositekudasai.png " %}" width="600" alt="総理大臣に相応しい人に投票してください" />
     </div>
     <div class="twitter">
-        <a class="twitter-timeline" data-width="300" data-height="1000" href="https://twitter.com/cuz_seiji?ref_src=twsrc%5Etfw">Tweets by cuz_seiji</a> 
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a class="twitter-timeline" data-width="300" data-height="1000" href="https://twitter.com/cuz_seiji?ref_src=twsrc%5Etfw">Tweets by cuz_seiji</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    
+
     <div class="BG1">
-      <img src="{% static "img/tohyo/sozai/BG1.jpg" %}" alt="BG1"/>
+      <img src="{% static " img/tohyo/sozai/BG1.jpg " %}" alt="BG1" />
     </div>
-      
+
     <div class="suga_face">
       <a href="/detail/スガヨシヒデ">
         <img src="{% static "img/tohyo/hito/suga_face.png" %}" width="140" alt="菅義偉の顔"/>
@@ -105,65 +102,67 @@
       </a>
     </div>
     <div class="yuriko_face">
-  	  <a href="/detail/コイケユリコ">
+      <a href="/detail/コイケユリコ">
         <img src="{% static "img/tohyo/hito/yuriko_face.png" %}" width="105" alt="小池百合子の顔"/>
       </a>
-  	</div>
-  	<div class="jakucho_face">
+    </div>
+    <div class="jakucho_face">
       <a href="/detail/セトウチジャクチョウ">
         <img src="{% static "img/tohyo/hito/jakucho_face.png" %}" width="95" alt="瀬戸内寂聴の顔"/>
       </a>
-  	</div>
+    </div>
     <div class="hikakin_face">
-  	  <a href="/detail/ヒカキン">
-  	    <img src="{% static "img/tohyo/hito/hikakin_face.png" %}" width="120" alt="HIKAKINの顔"/>
-  	  </a>
-  	</div>
+      <a href="/detail/ヒカキン">
+        <img src="{% static "img/tohyo/hito/hikakin_face.png" %}" width="120" alt="HIKAKINの顔"/>
+      </a>
+    </div>
     <div class="saori_face">
-  	  <a href="/detail/ヨシダサオリ">
-  	    <img src="{% static "img/tohyo/hito/saori_face.png" %}" width="100" alt="吉田沙保里の顔"/>
-  	  </a>
-  	</div>
+      <a href="/detail/ヨシダサオリ">
+        <img src="{% static "img/tohyo/hito/saori_face.png" %}" width="100" alt="吉田沙保里の顔"/>
+      </a>
+    </div>
     <div class="shuzo_face">
-  	  <a href="/detail/マツオカシュウゾウ">
+      <a href="/detail/マツオカシュウゾウ">
   	    <img src="{% static "img/tohyo/hito/shuzo_face.png" %}" width="150" alt="松岡修造の顔"/>
   	  </a>
-  	</div>
+    </div>
     <div class="waku">
-  		<img src="{% static "img/tohyo/sozai/waku_v2.png" %}" width="800" alt=""/>
-  	</div>
+      <img src="{% static " img/tohyo/sozai/waku_v2.png " %}" width="800" alt="" />
+    </div>
     <div class="fukidasi">
-  		<img src="{% static "img/tohyo/sozai/fukidasi1.png" %}" width="400" alt="" id="image1"/>
-  	</div> 
+      <img src="{% static " img/tohyo/sozai/fukidasi1.png " %}" width="400" alt="" id="image1" />
+    </div>
     <div class="name">
-  		<img src="{% static "img/tohyo/sozai/name_v2.png" %}" width="800" alt="" />
-  	</div>
-  	</main>
-  	{% include 'queen/footer.html' %} 
-    
-    <script>
-    const image1 = document.getElementById("image1");
-    image1.classList.add('off');
-    function func1() {
+      <img src="{% static " img/tohyo/sozai/name_v2.png " %}" width="800" alt="" />
+    </div>
+</main>
+{% include 'queen/footer.html' %}
+
+<script>
+  const image1 = document.getElementById("image1");
+  image1.classList.add('off');
+
+  function func1() {
     image1.classList.remove('off');
     image1.classList.add('on');
-    }
-    (function() {
-      const image = document.querySelectorAll('.img-wrap');
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.intersectionRatio > 0) {
-            entry.target.classList.add('img-animation');
-          } else {
-            entry.target.classList.remove('img-animation');
-          }
-        });
+  }
+  (function() {
+    const image = document.querySelectorAll('.img-wrap');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.intersectionRatio > 0) {
+          entry.target.classList.add('img-animation');
+        }
+        else {
+          entry.target.classList.remove('img-animation');
+        }
       });
-        
-      Array.prototype.forEach.call(image, function(img) {
-        observer.observe(img);
-      });
-    })();
-    </script>
-  </body>
+    });
+
+    Array.prototype.forEach.call(image, function(img) {
+      observer.observe(img);
+    });
+  })();
+</script>
+</body>
 </html>
