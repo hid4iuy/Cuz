@@ -31,7 +31,10 @@ ALLOWED_HOSTS = [
       'Cuzprod-env.eba-ucfunpms.ap-northeast-1.elasticbeanstalk.com'
 ]
 
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Application definition
 
@@ -129,16 +132,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+INTERNAL_IPS = ['127.0.0.1']
 
+
+# STATIC MEDIA ローカル設定
 #STATIC_URL = '/static/'
-
-
 #MEDIA_URL = '/media/'
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-INTERNAL_IPS = ['127.0.0.1']
-
-#STATIC_URL = '/static/'
+# STATIC MEDIA S3設定
 
 from storages.backends.s3boto3 import S3Boto3Storage 
 from tempfile import SpooledTemporaryFile
@@ -167,8 +169,6 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = { 
     'CacheControl': 'max-age=86400',
 }
-
-#DEFAULT_FILE_STORAGE = 'Cuz.settings.CustomS3Boto3Storage'
 
 AWS_LOCATION = 'static'
 MEDIA_LOCATION = 'media'
