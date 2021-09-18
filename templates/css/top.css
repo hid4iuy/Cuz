@@ -5,14 +5,7 @@
         body{
 background-image: url("{% static "img/tohyo/sozai/242669_s.jpg" %}");
 	min-width: 1600px;
-	  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
     }
-    
-main {
-  flex: 1;
-}
     
 .img-wrap{
 		text-align: center;
@@ -32,7 +25,7 @@ main {
   .waku {
     text-align: center;
     position: relative;
-    top: -4471px;
+    top: -4725px;
     left:-1px;
     pointer-events: none;
   }
@@ -40,7 +33,7 @@ main {
   .name {
     text-align: center;
     position: relative;
-    top: -157px;
+    top: -212px;
     left: -3px;
     pointer-events: none;
   }
@@ -437,16 +430,64 @@ main {
     transform: scale(1.08);
     transition-duration: 0.3s;
   }
+  .takaichi_face {
+    text-align: center;
+    position: relative;
+    top: -3605px;
+    left: -234px;
+    width: 150px;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: 0.3s;
+  }
 
+  .takaichi_face:hover {
+    transform: scale(1.08);
+    transition-duration: 0.3s;
+  }
+  
+    .kishida_face {
+    text-align: center;
+    position: relative;
+    top: -3863px;
+    left: -227px;
+    width: 160px;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: 0.3s;
+  }
+
+  .kishida_face:hover {
+    transform: scale(1.08);
+    transition-duration: 0.3s;
+  }
+    .noda_face {
+    text-align: center;
+    position: relative;
+    top: -3776px;
+    left: -114px;
+    width: 160px;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: 0.3s;
+  }
+
+  .noda_face:hover {
+    transform: scale(1.08);
+    transition-duration: 0.3s;
+  }
   .fukidasi {
     text-align: center;
     position: relative;
-    top: -5560px;
+    top: -5830px;
     left: -130px;
     margin: 0 auto;
     overflow: hidden;
     pointer-events: none;
-	margin-bottom: -5700px;
+	margin-bottom: -5900px;
   }
   
   
