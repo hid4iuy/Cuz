@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title>日本大統領選挙</title>
+  <meta name="description" content="日本でもし大統領選挙が行われたら、大統領はまさかのあの人！？総裁選で決まる総理なんか信用できない。決めるのはみんなの一票です！！"/>
   <link rel="icon" href="{% static 'icon/favicon.ico' %}"> 
 {% include 'queen/Include-File.html' %} 
 {% include 'css/top.css' %}
@@ -23,7 +24,7 @@
     </div>
 
     <div class="BG1">
-      <img src="{% static "img/tohyo/sozai/BG1.jpg" %}" alt="BG1" />
+      <img src="{% static "img/tohyo/sozai/BG1_v2.jpg" %}" alt="BG1" />
     </div>
 
     <div class="suga_face">
@@ -131,43 +132,55 @@
   	    <img src="{% static "img/tohyo/hito/shuzo_face.png" %}" width="150" alt="松岡修造の顔"/>
   	  </a>
     </div>
+    <div class="takaichi_face">
+  	  <a href="/detail/タカイチサナエ">
+  	    <img src="{% static "img/tohyo/hito/takaichi_face.png" %}" width="100" alt="高市早苗の顔"/>
+  	  </a>
+    </div>
+    <div class="noda_face">
+  	  <a href="/detail/ノダセイコ">
+  	    <img src="{% static "img/tohyo/hito/noda_face.png" %}" width="110" alt="野田聖子の顔"/>
+  	  </a>
+  	</div>
+    <div class="kishida_face">
+  	  <a href="/detail/キシダフミオ">
+  	    <img src="{% static "img/tohyo/hito/kishida_face.png" %}" width="110" alt="岸田文雄の顔"/>
+  	  </a>
+  	</div>
     <div class="waku">
-      <img src="{% static "img/tohyo/sozai/waku_v2.png" %}" width="800" alt="" />
-    </div>
+  		<img src="{% static "img/tohyo/sozai/waku_v2.png" %}" width="800" alt=""/>
+  	</div>
     <div class="fukidasi">
-      <img src="{% static "img/tohyo/sozai/fukidasi1.png" %}" width="400" alt="" id="image1" />
-    </div>
+  		<img src="{% static "img/tohyo/sozai/fukidasi1.png" %}" width="400" alt="" id="image1"/>
+  	</div> 
     <div class="name">
-      <img src="{% static "img/tohyo/sozai/name_v2.png" %}" width="800" alt="" />
-    </div>
-</main>
-{% include 'queen/footer.html' %}
-
-<script>
-  const image1 = document.getElementById("image1");
-  image1.classList.add('off');
-
-  function func1() {
+  		<img src="{% static "img/tohyo/sozai/name_v3.png" %}" width="800" alt="" />
+  	</div>
+  	{% include 'queen/footer.html' %} 
+    
+    <script>
+    const image1 = document.getElementById("image1");
+    image1.classList.add('off');
+    function func1() {
     image1.classList.remove('off');
     image1.classList.add('on');
-  }
-  (function() {
-    const image = document.querySelectorAll('.img-wrap');
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.intersectionRatio > 0) {
-          entry.target.classList.add('img-animation');
-        }
-        else {
-          entry.target.classList.remove('img-animation');
-        }
+    }
+    (function() {
+      const image = document.querySelectorAll('.img-wrap');
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.intersectionRatio > 0) {
+            entry.target.classList.add('img-animation');
+          } else {
+            entry.target.classList.remove('img-animation');
+          }
+        });
       });
-    });
-
-    Array.prototype.forEach.call(image, function(img) {
-      observer.observe(img);
-    });
-  })();
-</script>
-</body>
+        
+      Array.prototype.forEach.call(image, function(img) {
+        observer.observe(img);
+      });
+    })();
+    </script>
+  </body>
 </html>
